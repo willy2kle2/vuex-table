@@ -2,9 +2,6 @@ import Vue from 'vue';
 import {shallowMount} from '@vue/test-utils';
 import Datatable from '../../../src/components/datatable/Datatable.vue';
 
-const localVue = createLocalVue();
-localVue.use(Vuex);
-
 const wrapper = shallowMount(Datatable);
 
 // EVENTS TESTS
