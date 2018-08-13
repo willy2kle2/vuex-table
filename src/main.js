@@ -3,10 +3,12 @@
 import Vue from 'vue';
 import App from './App';
 import BootstrapVue from 'bootstrap-vue';
+import LodashPlugin from './plugins/lodash';
 
 Vue.use(BootstrapVue);
+Vue.use(LodashPlugin);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
