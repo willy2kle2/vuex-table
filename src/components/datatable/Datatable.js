@@ -97,7 +97,6 @@ export default {
         return this.state.newRows.filter(row => (_.map(row, value => matcher.test(`${value}`))).some(val => val));
       }
       else {
-
         return this.paginate_data;
       }
     },

@@ -7,9 +7,11 @@ const wrapper = shallowMount(Datatable);
 // EVENTS TESTS
 wrapper.vm.$emit('checkbox');
 wrapper.vm.$emit('check');
+wrapper.vm.$emit('check-all');
 
 expect(wrapper.emitted().checkbox.toBeTruthy());
 expect(wrapper.emitted().check.toBeTruthy());
+expect(wrapper.emitted().checkAll.toBeTruthy());
 
 
 /*

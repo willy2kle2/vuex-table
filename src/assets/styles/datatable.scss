@@ -1,6 +1,5 @@
 
 // MOBILE-FIRST
-@media (max-width: 760px) {
   * {
     box-sizing: border-box;
   }
@@ -250,9 +249,9 @@
     }
   }
 
-}
-// DESKTOP
 
+// DESKTOP
+@media (min-width: 760px) {
   .data-container {
     overflow-x: scroll;
     overflow-y: hidden;
@@ -288,8 +287,7 @@
     padding: 0 0 1rem 0.2rem;
   }
 
-
-  .headings .row-container{
+  .headings .row-container {
     margin-left: 1rem;
   }
 
@@ -300,7 +298,6 @@
     width: 100%;
     border: none;
   }
-
 
   .data-row .cell {
     padding: 0 0.5rem 0.2rem 0;
@@ -355,7 +352,6 @@
       border-radius: 3rem;
       outline: none;
 
-
     }
     i {
       font-size: 2rem;
@@ -403,3 +399,4 @@
     display: block;
   }
 
+}

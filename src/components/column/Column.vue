@@ -7,6 +7,5 @@
 <script src="./Column.js"></script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-    @import "../../assets/styles/datatable.scss";
+<style>
 </style>
