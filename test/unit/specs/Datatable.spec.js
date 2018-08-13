@@ -3,8 +3,7 @@ import Vuex from 'vuex';
 import {shallowMount, mount, createLocalVue} from '@vue/test-utils';
 import Datatable from '../../../src/components/datatable/Datatable.vue';
 import LodashPlugin from '../../../src/plugins/lodash';
-
-Vue.use(LodashPlugin);
+import Store from '../../../src/store';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
@@ -12,7 +11,9 @@ localVue.use(Vuex);
 //Need to inject Lodash Plugin to test Datatable.vue
 Vue.use(LodashPlugin);
 
-const wrapper = shallowMount(Datatable);
+const state = {};
+const store = new Vuex.Store({ state });
+const wrapper = shallowMount(Datatable, { store });
 
 // EVENTS TESTS
 
@@ -61,18 +62,22 @@ describe('Datatable.vue', () => {
     const Constructor = Vue.extend('Datatable');
     const component = new Constructor({propsData: props}).$mount;
 
+    column.propsData({ visible: true });
+
     component.setData({
-      newRows: [
-        {id: 1, first_name: 'Jesse', last_name: 'Simmons', date: '2016-10-15 13:43:27', gender: 'Male'},
-        {id: 2, first_name: 'John', last_name: 'Jacobs', date: '2016-12-15 06:00:53', gender: 'Male'},
-        {id: 3, first_name: 'Tina', last_name: 'Gilbert', date: '2016-04-26 06:26:28', gender: 'Female'},
-      ],
-      newCheckedRows: [
-        {id: 1, first_name: 'Jesse', last_name: 'Simmons', date: '2016-10-15 13:43:27', gender: 'Male'},
-        {id: 2, first_name: 'John', last_name: 'Jacobs', date: '2016-12-15 06:00:53', gender: 'Male'},
-        {id: 3, first_name: 'Tina', last_name: 'Gilbert', date: '2016-04-26 06:26:28', gender: 'Female'},
-      ],
-      search: 'Jesse',
+      state: {
+        newRows: [
+          {id: 1, first_name: 'Jesse', last_name: 'Simmons', date: '2016-10-15 13:43:27', gender: 'Male'},
+          {id: 2, first_name: 'John', last_name: 'Jacobs', date: '2016-12-15 06:00:53', gender: 'Male'},
+          {id: 3, first_name: 'Tina', last_name: 'Gilbert', date: '2016-04-26 06:26:28', gender: 'Female'},
+        ],
+        newCheckedRows: [
+          {id: 1, first_name: 'Jesse', last_name: 'Simmons', date: '2016-10-15 13:43:27', gender: 'Male'},
+          {id: 2, first_name: 'John', last_name: 'Jacobs', date: '2016-12-15 06:00:53', gender: 'Male'},
+          {id: 3, first_name: 'Tina', last_name: 'Gilbert', date: '2016-04-26 06:26:28', gender: 'Female'},
+        ],
+        search: 'Jesse',
+      }
     });
 // TESTING BASIC COMPUTED PROPERTIES
 
