@@ -9,6 +9,9 @@ Vue.use(LodashPlugin);
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
+//Need to inject Lodash Plugin to test Datatable.vue
+Vue.use(LodashPlugin);
+
 const wrapper = shallowMount(Datatable);
 
 // EVENTS TESTS
