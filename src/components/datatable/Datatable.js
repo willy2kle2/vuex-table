@@ -3,6 +3,7 @@ import Column from '../column/Column.vue';
 import Paginator from '../paginator/Paginator.vue';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
+import 'font-awesome/css/font-awesome.css';
 export default {
   name: 'datatable',
   components: {Column, Paginator},
