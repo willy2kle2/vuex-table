@@ -1,6 +1,11 @@
 import Vue from 'vue';
 import {shallowMount} from '@vue/test-utils';
 import Datatable from '../../../src/components/datatable/Datatable.vue';
+import LodashPlugin from '../../../src/plugins/lodash';
+
+//Need to inject Lodash Plugin to test Datatable.vue
+Vue.use(LodashPlugin);
+
 
 const wrapper = shallowMount(Datatable);
 
