@@ -1,0 +1,45 @@
+{
+  "source": "./app",
+  "destination": "./doc",
+  "plugins": [
+    {
+      "name": "esdoc-standard-plugin",
+      "option": {
+        "lint": {"enable": false},
+        "undocumentIdentifier": {"enable": false},
+        "unexportedIdentifier": {"enable": true},
+        "manual": {
+          "index": "./manual/index.md",
+          "asset": "./manual/asset",
+          "files": [
+            "./apidoc/overview.md",
+            "./apidoc/architecture.md",
+            "./apidoc/gettingstarted.md",
+            "./apidoc/deployment.md",
+            "./CODE_OF_CONDUCT.md",
+            "./CONTRIBUTING.md"
+          ]
+        },
+        "brand": {
+          "logo": "./manual/asset/logo.png",
+          "title": "Application",
+          "description": "",
+          "repository": "https://",
+          "site": "https://",
+          "image": "https://"
+        }
+      }
+    },
+    {
+      "name": "esdoc-flow-type-plugin",
+      "option": {"enable": true}
+    },
+    {
+      "name": "esdoc-ecmascript-proposal-plugin",
+      "option": {"all": true}
+    },
+    {
+      "name": "esdoc-node"
+    }
+  ]
+}
