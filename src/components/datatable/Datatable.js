@@ -19,7 +19,7 @@ import Paginator from '../paginator/Paginator.vue';
 
 export default {
   name: 'datatable',
-  components: {Column, Paginator},
+  components: { Column, Paginator },
   mixins: [OAMixin],
   data() {
     return {
@@ -47,32 +47,32 @@ export default {
     };
   },
   props: {
-    rows: {type: [Array, Object], default: () => []},
-    columns: {type: Array, default: () => []},
-    paginated: {type: Boolean, default: true},
+    rows: { type: [Array, Object], default: () => [] },
+    columns: { type: Array, default: () => [] },
+    paginated: { type: Boolean, default: true },
     checkable: Boolean,
-    currentPage: {type: Number, default: 1},
-    itemsPerPage: {type: Number, default: 5},
-    isSortable: {type: Boolean, default: true},
-    displaySearchbar: {type: Boolean, default: true},
+    currentPage: { type: Number, default: 1 },
+    itemsPerPage: { type: Number, default: 5 },
+    isSortable: { type: Boolean, default: true },
+    displaySearchbar: { type: Boolean, default: true },
     defaultSort: [String, Array],
-    defaultSortDirection: {type: String, default: 'asc'},
-    backendSorting: {type: Boolean},
-    backendPagination: {type: Boolean},
-    backendSearch: {type: Boolean},
-    total: {type: [Number, String], default: 0},
-    selected: {type: Boolean},
-    rowClass: {type: Function, default: () => ''},
-    selectedRows: {type: Object},
-    isRowCheckable: {type: Function, default: () => true},
-    checkedRows: {type: Array, default: () => []},
+    defaultSortDirection: { type: String, default: 'asc' },
+    backendSorting: { type: Boolean },
+    backendPagination: { type: Boolean },
+    backendSearch: { type: Boolean },
+    total: { type: [Number, String], default: 0 },
+    selected: { type: Boolean },
+    rowClass: { type: Function, default: () => '' },
+    selectedRows: { type: Object },
+    isRowCheckable: { type: Function, default: () => true },
+    checkedRows: { type: Array, default: () => [] },
     customIsChecked: Function,
-    showDetails: {type: Boolean, default: false},
-    detailsOpened: {type: Array, default: () => []},
-    detailKey: {type: String, default: ''},
-    detailsVisible: {type: Function, default: () => true},
-    isColumnCheckable: {type: Boolean, default: true},
-    loading: {type: Boolean},
+    showDetails: { type: Boolean, default: false },
+    detailsOpened: { type: Array, default: () => [] },
+    detailKey: { type: String, default: '' },
+    detailsVisible: { type: Function, default: () => true },
+    isColumnCheckable: { type: Boolean, default: true },
+    loading: { type: Boolean },
 
 
   },
@@ -131,9 +131,8 @@ export default {
         const matcher = new RegExp(this.state.search, 'gmi');
         return this.state.newRows.filter(row => (_.map(row, value => matcher.test(`${value}`))).some(val => val));
       }
-      else {
-        return this.paginate_data;
-      }
+
+      return this.paginate_data;
     },
     has_sortable_new_columns() {
       return this.newColumns.some(column => column.sortable);
@@ -265,8 +264,7 @@ export default {
       }
       if (this.backendSorting) {
         this.$emit('sort', column.field, this.state.ascendant ? 'asc' : 'desc');
-      }
-      else {
+      } else {
         this.state.newRows = this.sort_by(
           this.state.newRows,
           column.field,
@@ -469,4 +467,4 @@ export default {
       return !key.length ? idx : idx[key];
     },
   },
-}
+};
