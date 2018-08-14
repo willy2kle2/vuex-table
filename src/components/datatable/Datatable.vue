@@ -10,7 +10,7 @@
                :value="column.field" checked>
       </div>
     </div>
-    <table class="table table-striped" v-if="$lodash.values(state.visibilities) !== false">
+    <table class="table table-striped" v-if="state.visibilities !== false">
       <tbody>
       <tr class="headings" v-if="state.newColumns.length" @keydown.prevent.up="pressedArrow(-1)"
           @keydown.prevent.down="pressedArrow(1)">
