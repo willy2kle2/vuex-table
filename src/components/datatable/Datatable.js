@@ -16,9 +16,7 @@
 import OAMixin from '../../mixins/ObjectAccessMixin';
 import Column from '../column/Column.vue';
 import Paginator from '../paginator/Paginator.vue';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
-import 'font-awesome/css/font-awesome.css';
+
 export default {
   name: 'datatable',
   components: {Column, Paginator},
@@ -221,6 +219,15 @@ export default {
   },
   methods: {
 
+    /**
+     * Function for sorting according to params
+     * @param data
+     * @param key
+     * @param func
+     * @param ascendant
+     * @returns {Array}
+     */
+
     // SORTING FUNCTIONS
     sort_by(data, key, func, ascendant) {
       let sorted = [];
@@ -240,6 +247,14 @@ export default {
       }
       return sorted;
     },
+
+    /**
+     * Sorting function
+     * @param column
+     * @param updatingData
+     * @returns {object}
+     * @see sort_by
+     */
 
     sort(column, updatingData = false) {
       if (!this.isSortable) {
@@ -262,6 +277,10 @@ export default {
       this.state.currentSortColumn = column;
     },
 
+    /**
+     * Function to initialize sort according to defaultSort property
+     * @property defaultSort
+     */
 
     initialize_sort() {
       if (!this.defaultSort) {
@@ -286,6 +305,12 @@ export default {
     },
 
     // PAGINATION FUNCTION
+    /**
+     * Function to change page
+     * @param page
+     * @event page-change
+     * @event update:currentPage
+     */
     change_page(page) {
       this.state.newCurrentPage = page.current_page > 0 ? page.current_page : 1;
       this.$emit('page-change', this.state.newCurrentPage);
@@ -293,7 +318,11 @@ export default {
     },
 
     // SELECT ROW
-
+    /**
+     * Function for verifying whether a row is checked or not
+     * @param row
+     * @returns {boolean}
+     */
     is_row_checked(row) {
       return this.state.newCheckedRows.indexOf(row, this.customIsChecked) >= 0;
     },
@@ -304,6 +333,13 @@ export default {
         this.state.newCheckedRows.splice(index, 1);
       }
     },
+
+    /**
+     * Function to check row
+     * @param row
+     * @event check
+     * @event update:checkedRows
+     */
     check_row(row) {
       if (!this.is_row_checked(row)) {
         this.state.newCheckedRows.push(row);
@@ -313,6 +349,13 @@ export default {
       this.$emit('check', this.state.newCheckedRows, row);
       this.$emit('update:checkedRows', this.state.newCheckedRows);
     },
+
+    /**
+     * Function for checking all rows at once
+     * @event check
+     * @event check-all
+     * @event update:checkedRows
+     */
 
     check_all() {
       const is_all_checked = this.is_all_checked;
@@ -333,19 +376,34 @@ export default {
       return value;
     },
     // SELECT COLUMN
+
+    /**
+     * Function to check a column
+     * @param column
+     * @event check-column
+     */
     check_column(column) {
       column.visible = !column.visible;
       this.state.visibilities[column.field] = column.visible;
       this.$emit('check-column', column.visible, column.field);
     },
 
+    /**
+     * Functions called when datatable is diplayed on a mobile device and user browses different rows
+     */
     // MOBILE
+    /**
+     * Function to display next row
+     */
     next_card() {
       this.state.currentCard++;
       if (this.state.currentCard >= this.search_data.length) {
         this.state.currentCard = 0;
       }
     },
+    /**
+     * Function to display previous row
+     */
     previous_card() {
       this.state.currentCard--;
       if (this.state.currentCard < 0) {
@@ -354,6 +412,16 @@ export default {
     },
 
     // SHOW DETAILS
+
+    /**
+     * Function that show and hides details
+     * @param obj
+     * @function open_detail_row
+     * @function close_detail_row
+     * @event details-open
+     * @event details-close
+     * @event update:openedDetailed
+     */
 
     toggle_details(obj) {
       const item = this.is_visible_detail_row(obj);
@@ -368,17 +436,28 @@ export default {
       this.$emit('update:openedDetailed', this.state.visibleDetailRows);
     },
 
+    /**
+     * Function to show details
+     * @param obj
+     */
     open_detail_row(obj) {
       const index = this.handle_detail_key(obj);
       this.state.visibleDetailRows.push(index);
     },
-
+    /**
+     * Function to hide details
+     * @param obj
+     */
     close_detail_row(obj) {
       const index = this.handle_detail_key(obj);
       const i = this.state.visibleDetailRows.indexOf(index);
       this.state.visibleDetailRows.splice(i, 1);
     },
-
+    /**
+     * Function to check whether a row contains details to show or not
+     * @param obj
+     * @returns {boolean}
+     */
     is_visible_detail_row(obj) {
       const index = this.handle_detail_key(obj);
       const result = this.state.visibleDetailRows.indexOf(index) >= 0;

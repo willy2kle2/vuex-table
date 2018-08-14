@@ -7,5 +7,4 @@
 <script src="./Column.js"></script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-</style>
+<style></style>

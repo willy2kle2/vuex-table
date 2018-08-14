@@ -10,6 +10,9 @@ import App from './App';
 import BootstrapVue from 'bootstrap-vue';
 import LodashPlugin from './plugins/lodash';
 import store from './store';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+import 'font-awesome/css/font-awesome.css';
 
 Vue.use(Vuex);
 Vue.use(BootstrapVue);
