@@ -1,3 +1,18 @@
+/**
+ * @name Datatable
+ * @author Federica Alfano <federica.alfano@superpitch.fr>
+ * @author Corentin Ribeyre <corentin.ribeyre@superpitch.fr>
+ * @fileOverview This file contains all methods, props, computed properties and watchers that are necessary for datatable to work correctly.
+ * Basic functions:
+ * @see [paginate_data]{@link Datatable#paginate_data}
+ * @see [search_data]{@link Datatable#search_data}
+ * @see [change_page]{@link Datatable#change_page}
+ * @see [check_row]{@link Datatable#check_row}
+ * @see [check_all]{@link Datatable#check_all}
+ * @see [check_column]{@link Datatable#check_column}
+ * @see [check_details]{@link Datatable#check_details}
+ */
+
 import OAMixin from '../../mixins/ObjectAccessMixin';
 import Column from '../column/Column.vue';
 import Paginator from '../paginator/Paginator.vue';
@@ -64,6 +79,13 @@ export default {
 
   },
   computed: {
+    /**
+     *  Function for pagination.
+     *  @property itemsPerPage, number of rows displayed in every page.
+     *  @param  Start point, provided by pagination offset
+     *  @param End point, corresponding to itemsPerPage
+     *  @returns {array} Rows between start
+     */
     paginate_data() {
       if (!this.paginated) {
         return this.state.newRows;
@@ -77,6 +99,11 @@ export default {
       const end = parseInt(start, 10) + parseInt(itemsPerPage, 10);
       return this.state.newRows.slice(start, end);
     },
+
+    /**
+     * Function filtering on all rows to see whether all rows are checked or not
+     * @returns {boolean}
+     */
     is_all_checked() {
       const validVisibleData = this.search_data.filter(
         row => this.isRowCheckable(row));
@@ -86,11 +113,20 @@ export default {
       const isAllChecked = validVisibleData.some(currentVisibleRow => this.state.newCheckedRows.indexOf(currentVisibleRow, this.customIsChecked) < 0);
       return !isAllChecked;
     },
-
+    /**
+     * Function filtering on all rows to detect rows that can be unchecked.
+     * @returns {boolean}
+     */
     is_all_uncheckable() {
       const validVisibleData = this.paginate_data.filter(row => this.isRowCheckable(row));
       return validVisibleData.length === 0;
     },
+
+    /**
+     * Function filtering on rows displaying results that match with search input value.
+     * @default When search input is empty, all rows of paginate_date are displayed.
+     * @returns {array}
+     */
 
     search_data() {
       if (this.state.search !== '') {
@@ -105,12 +141,21 @@ export default {
       return this.newColumns.some(column => column.sortable);
     },
 
+    /**
+     * Function that checks whether user device is mobile or not
+     * @returns {boolean}
+     */
+
     is_mobile() {
       window.innerWidth < 768 ? this.state.mobile = true : this.state.mobile = false;
       return this.state.mobile;
     },
   },
   watch: {
+    /**
+     * Watcher for setting columns and rows after user interaction
+     * @param value
+     */
     set_data(value) {
       const saveNewColumns = this.state.newColumns;
 
@@ -123,6 +168,13 @@ export default {
         this.state.newRowsTotal = value.length;
       }
     },
+
+    /**
+     * Function for getting number of total pages from backend
+     * @param newTotal
+     * @see backendPagination
+     *
+     */
     total(newTotal) {
       if (!this.backendPagination) return;
       this.state.newRowsTotal = newTotal;
@@ -141,6 +193,11 @@ export default {
         }
       }
     },
+    /**
+     * Getting current page for @function change_page
+     * @param value
+     * @see change_page
+     */
     current_page(value) {
       this.state.newCurrentPage = value;
     },

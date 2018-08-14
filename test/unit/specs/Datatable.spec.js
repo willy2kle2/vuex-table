@@ -69,10 +69,18 @@ describe('Datatable.vue', () => {
           {id: 2, first_name: 'John', last_name: 'Jacobs', date: '2016-12-15 06:00:53', gender: 'Male'},
           {id: 3, first_name: 'Tina', last_name: 'Gilbert', date: '2016-04-26 06:26:28', gender: 'Female'},
         ],
+        newCheckedRows: [
+          {id: 1, first_name: 'Jesse', last_name: 'Simmons', date: '2016-10-15 13:43:27', gender: 'Male'},
+          {id: 2, first_name: 'John', last_name: 'Jacobs', date: '2016-12-15 06:00:53', gender: 'Male'},
+          {id: 3, first_name: 'Tina', last_name: 'Gilbert', date: '2016-04-26 06:26:28', gender: 'Female'},
+        ],
+        search: 'Jesse',
     });
 // TESTING BASIC COMPUTED PROPERTIES
 
     expect(component.vm.paginate_data).toEqual(3);
+    expect(component.vm.is_all_checked).toBe(true);
+    expect(component.vm.search_data.length).toEqual(1);
   });
 
 // METHODS TESTS
