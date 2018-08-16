@@ -63,7 +63,6 @@
 </script>
 
 <style>
-  @import "assets/styles/datatable.scss";
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
