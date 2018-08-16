@@ -1,3 +1,0 @@
-#vuex-table
-
-Vuex-

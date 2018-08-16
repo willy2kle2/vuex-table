@@ -27,6 +27,7 @@
     "mermaid": "^8.0.0-rc.8",
     "popper.js": "^1.14.4",
     "sass-loader": "^7.1.0",
+    "sinon": "^6.1.5",
     "vue": "^2.5.2"
   },
   "devDependencies": {

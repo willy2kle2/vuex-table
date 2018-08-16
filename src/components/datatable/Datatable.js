@@ -317,7 +317,7 @@ export default {
 
     // SELECT ROW
     /**
-     * Function for verifying whether a row is checked or not
+     * Function to verify whether a row is checked or not
      * @param row
      * @returns {boolean}
      */
