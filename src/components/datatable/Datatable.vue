@@ -45,7 +45,7 @@
           </div>
           <template v-for="(row, index) in search_data">
             <div :key="index" :class="[rowClass(row, index), {'selected': is_row_checked(row)}]"
-                 class="row-container border-table data-row"
+                 class=" border-table data-row"
                  v-show="is_mobile? index === state.currentCard : true ">
               <div class="datatable-checkbox">
                 <input type="checkbox" class="datatable-checkbox inline-block" :disabled="!isRowCheckable(row)"
@@ -70,7 +70,7 @@
                   <slot :name="column.field" :index="index" :data="column.field" :label="column.label"
                         :visible="state.visibilities[column.field]">
                     <column :visible="state.visibilities[column.field]" :label="column.label" :field="column.field">
-                      <span class="data-row">{{row[column.field]}}</span>
+                      <span>{{row[column.field]}}</span>
                     </column>
                   </slot>
                 </div>

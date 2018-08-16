@@ -8,6 +8,7 @@
   .data-container {
     margin-bottom: 3rem;
     width: 100%;
+    padding: 1rem;
 
   }
 
@@ -284,10 +285,6 @@
     hyphens: auto;
   }
 
-  .row-container:last-child {
-    padding: 0 0 1rem 0.2rem;
-  }
-
   .headings .row-container {
     margin-left: 1rem;
   }
@@ -324,15 +321,11 @@
     display: flex;
     justify-content: space-between;
     border-top: none;
-    padding: 0 0.4rem;
+    padding: 0.3rem 0.4rem;
     width: 100%;
     margin: 0;
     height: 5rem;
     line-height: 5rem;
-  }
-
-  .data-input {
-    width: 1140px;
   }
 
   .datatable-checkbox {
@@ -340,9 +333,14 @@
   }
 
   .data-input {
-    width: 100%;
+    width: 1140px;
+    position: relative;
+    margin-bottom: 5rem;
+
 
     input[type="search"] {
+      position: absolute;
+      left: 0;
       margin-left: 0;
       width: 2vw;
       padding: 1rem 3rem;
