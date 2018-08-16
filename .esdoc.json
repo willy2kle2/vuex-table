@@ -15,7 +15,6 @@
             "./apidoc/overview.md",
             "./apidoc/architecture.md",
             "./apidoc/gettingstarted.md",
-            "./apidoc/deployment.md",
             "./CODE_OF_CONDUCT.md",
             "./CONTRIBUTING.md"
           ]

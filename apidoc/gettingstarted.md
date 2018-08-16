@@ -2,6 +2,12 @@
 
 > A vuex Datatable
 
+##Install
+
+```
+npm install --save vuex-table
+```
+
 ## Build Setup
 
 ``` bash
