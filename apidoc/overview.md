@@ -1,4 +1,4 @@
-# VUEX-TABLE
+# Vuex-table
 
 ## Concept
 Vuex-table is Vue component created in order to easily fit in any Vue (even with Vuex) project.
@@ -27,6 +27,13 @@ It consists on a table representation of informations whose data can be provided
 - **Show/Hide columns** 
 
     Each column can be hidden or shown by clicking on the appropriate checkbox.
+    
+## Collaborators
+  * Federica Alfano 
+  * Corentin Ribeyre 
 
-## Copyright
+## License
+Code released under MIT license.
+
+Copyright (c) 2018, NSW Prim.
 

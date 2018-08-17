@@ -1,27 +1,46 @@
 # vuex-table
 
-> A vuex Datatable
+> Vuex-table is Vue component created in order to easily fit in any Vue (even with Vuex) project.
+> It consists on a table representation of informations whose data can be provided both from frontend or backend.
 
-## Build Setup
+## Features
 
-``` bash
-# install dependencies
-npm install
+- **Sorting**
+    
+   Rows can be sorted according to column field (ex. sorting names alphabetically )
+- **Selection**
+    
+    Rows can checked one by one or all at once by clicking on checkbox.
+  
+- **Search**
+    
+    Rows which match with user input in searchbar will be displayed, so that user can easily find the information he/she is looking for.
+- **Pagination**
 
-# serve with hot reload at localhost:8080
-npm run dev
+    For a better browsing on data, a maximum number of rows is displayed and others can be shown just by changing page.
+- **Show/Hide details**
 
-# build for production with minification
-npm run build
+    Each row can contain details that users can show and hide by clicking on the icon.
+- **Show/Hide columns** 
 
-# build for production and view the bundle analyzer report
-npm run build --report
+    Each column can be hidden or shown by clicking on the appropriate checkbox.
 
-# run unit tests
-npm run unit
+## Quick start
 
-# run all tests
-npm test
+###Install
+
+```
+npm install --save vuex-table
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+### Import
+
+```
+import Vue from 'vue';
+import VuexTable from 'vuex-table';
+```
+
+
+
+
+

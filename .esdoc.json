@@ -9,18 +9,14 @@
         "undocumentIdentifier": {"enable": false},
         "unexportedIdentifier": {"enable": true},
         "manual": {
-          "index": "./manual/index.md",
-          "asset": "./manual/asset",
+          "index": "./apidoc/overview.md",
           "files": [
             "./apidoc/overview.md",
             "./apidoc/architecture.md",
-            "./apidoc/gettingstarted.md",
-            "./CODE_OF_CONDUCT.md",
-            "./CONTRIBUTING.md"
+            "./apidoc/gettingstarted.md"
           ]
         },
         "brand": {
-          "logo": "./manual/asset/logo.png",
           "title": "Application",
           "description": "",
           "repository": "https://",
