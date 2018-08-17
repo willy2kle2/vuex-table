@@ -28,6 +28,12 @@ It consists on a table representation of informations whose data can be provided
 
     Each column can be hidden or shown by clicking on the appropriate checkbox.
     
+## Documentation
+
+The documentation is the doc directory.
+You cand find [here]() online documentation
+
+    
 ## Collaborators
   * Federica Alfano 
   * Corentin Ribeyre 
@@ -35,5 +41,5 @@ It consists on a table representation of informations whose data can be provided
 ## License
 Code released under MIT license.
 
-Copyright (c) 2018, NSW Prim.
+Copyright (c) 2018, Superpitch.
 

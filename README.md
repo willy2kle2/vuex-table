@@ -24,8 +24,14 @@
 - **Show/Hide columns** 
 
     Each column can be hidden or shown by clicking on the appropriate checkbox.
+    
+## Documentation
+
+The documentation is the doc directory.
+You cand find [here]() online documentation
 
 ## Quick start
+
 
 ###Install
 
