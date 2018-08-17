@@ -268,7 +268,7 @@ export default {
         this.state.newRows = this.sort_by(
           this.state.newRows,
           column.field,
-          column.customSort,
+          column.defaultSort,
           this.state.ascendant,
         );
       }

@@ -4,7 +4,7 @@
 
 ## Quick start
 
-###Install
+### Install
 
 ```
 npm install --save vuex-table

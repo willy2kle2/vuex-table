@@ -1,6 +1,8 @@
 {
-  "source": "./app",
+  "source": "./src",
   "destination": "./doc",
+  "includes": ["\\.js$"],
+  "excludes": ["\\.config\\.js$"],
   "plugins": [
     {
       "name": "esdoc-standard-plugin",
@@ -11,15 +13,20 @@
         "manual": {
           "index": "./apidoc/overview.md",
           "files": [
-            "./apidoc/overview.md",
             "./apidoc/architecture.md",
             "./apidoc/gettingstarted.md"
           ]
         },
+        "test" : {
+          "source": "./test/",
+          "interfaces": ["describe", "it", "context", "suite", "test"],
+          "includes": ["(spec|Spec|test|Test)\\.js$"],
+          "excludes": ["\\.config\\.js$"]
+        },
         "brand": {
-          "title": "Application",
-          "description": "",
-          "repository": "https://",
+          "title": "vuex-table",
+          "description": "A Vue datatable",
+          "repository": "https://github.com/superpitch-agency/vuex-table",
           "site": "https://",
           "image": "https://"
         }

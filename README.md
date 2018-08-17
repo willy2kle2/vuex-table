@@ -20,7 +20,7 @@
     For a better browsing on data, a maximum number of rows is displayed and others can be shown just by changing page.
 - **Show/Hide details**
 
-    Each row can contain details that users can show and hide by clicking on the icon.
+    Each row may contain details that users can show and hide by clicking on the icon.
 - **Show/Hide columns** 
 
     Each column can be hidden or shown by clicking on the appropriate checkbox.
@@ -33,7 +33,7 @@ You cand find [here]() online documentation
 ## Quick start
 
 
-###Install
+### Install
 
 ```
 npm install --save vuex-table
