@@ -1,0 +1,45 @@
+{
+  "source": "./src",
+  "destination": "./doc",
+  "plugins": [
+    {
+      "name": "esdoc-standard-plugin",
+      "option": {
+        "lint": {"enable": false},
+        "undocumentIdentifier": {"enable": true},
+        "unexportedIdentifier": {"enable": true},
+        "manual": {
+          "index": "./apidoc/overview.md",
+          "files": [
+            "./apidoc/gettingstarted.md",
+            "./apidoc/architecture.md"
+          ]
+        },
+        "test" : {
+          "source": "./test/",
+          "interfaces": ["describe", "it", "context", "suite", "test"],
+          "includes": ["(spec|Spec|test|Test)\\.js$"],
+          "excludes": ["\\.config\\.js$"]
+        },
+        "brand": {
+          "title": "vuex-table",
+          "description": "A Vue datatable",
+          "repository": "https://github.com/superpitch-agency/vuex-table",
+          "site": "https://",
+          "image": "https://"
+        }
+      }
+    },
+    {
+      "name": "esdoc-flow-type-plugin",
+      "option": {"enable": true}
+    },
+    {
+      "name": "esdoc-ecmascript-proposal-plugin",
+      "option": {"all": true}
+    },
+    {
+      "name": "esdoc-node"
+    }
+  ]
+}
