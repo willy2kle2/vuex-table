@@ -50,7 +50,7 @@ It consists on a table representation of informations whose data can be provided
 ## Documentation
 
 The documentation is the doc directory.
-You cand find [here]() online documentation
+You cand find [here](https://superpitch-agency.github.io/vuex-table/) online documentation
 
     
 ## Collaborators
