@@ -1,20 +1,18 @@
 {
   "source": "./src",
   "destination": "./doc",
-  "includes": ["\\.js$"],
-  "excludes": ["\\.config\\.js$"],
   "plugins": [
     {
       "name": "esdoc-standard-plugin",
       "option": {
         "lint": {"enable": false},
-        "undocumentIdentifier": {"enable": false},
+        "undocumentIdentifier": {"enable": true},
         "unexportedIdentifier": {"enable": true},
         "manual": {
           "index": "./apidoc/overview.md",
           "files": [
-            "./apidoc/architecture.md",
-            "./apidoc/gettingstarted.md"
+            "./apidoc/gettingstarted.md",
+            "./apidoc/architecture.md"
           ]
         },
         "test" : {

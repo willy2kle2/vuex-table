@@ -1,7 +1,43 @@
-/**
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">src/components/datatable/Datatable.js | vuex-table</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="A Vue datatable"><meta property="og:type" content="website"><meta property="og:url" content="https://"><meta property="og:site_name" content="vuex-table"><meta property="og:title" content="vuex-table"><meta property="og:image" content="https://"><meta property="og:description" content="A Vue datatable"><meta property="og:author" content="Federica Alfano &lt;federica.alfano@superpitch.fr&gt;"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="vuex-table"><meta property="twitter:description" content="A Vue datatable"><meta property="twitter:image" content="https://"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/superpitch-agency/vuex-table"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  </ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/components/datatable/Datatable.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
  * @name Datatable
- * @author Federica Alfano <federica.alfano@superpitch.fr>
- * @author Corentin Ribeyre <corentin.ribeyre@superpitch.fr>
+ * @author Federica Alfano &lt;federica.alfano@superpitch.fr&gt;
+ * @author Corentin Ribeyre &lt;corentin.ribeyre@superpitch.fr&gt;
  * @fileOverview This file contains all methods, props, computed properties and watchers that are necessary for datatable to work correctly.
  * Basic functions:
  * @see [paginate_data]{@link Datatable#paginate_data}
@@ -13,12 +49,12 @@
  * @see [check_details]{@link Datatable#toggle_details}
  */
 
-import OAMixin from '../../mixins/ObjectAccessMixin';
-import Column from '../column/Column.vue';
-import Paginator from '../paginator/Paginator.vue';
+import OAMixin from &apos;../../mixins/ObjectAccessMixin&apos;;
+import Column from &apos;../column/Column.vue&apos;;
+import Paginator from &apos;../paginator/Paginator.vue&apos;;
 
 export default {
-  name: 'datatable',
+  name: &apos;datatable&apos;,
   components: { Column, Paginator },
   mixins: [OAMixin],
   data() {
@@ -33,12 +69,12 @@ export default {
         ascendant: true,
         newCheckedRows: [...this.checkedRows],
         _isTable: true,
-        search: '',
+        search: &apos;&apos;,
         currentCard: 0,
         mobile: false,
         visibleDetailRows: this.detailsOpened,
         newValue: this.value,
-        visibilities: this.columns.reduce((obj, v) => {
+        visibilities: this.columns.reduce((obj, v) =&gt; {
           obj[v.field] = v.visible || true;
           return obj;
         }, {}),
@@ -47,8 +83,8 @@ export default {
     };
   },
   props: {
-    rows: { type: [Array, Object], default: () => [] },
-    columns: { type: Array, default: () => [] },
+    rows: { type: [Array, Object], default: () =&gt; [] },
+    columns: { type: Array, default: () =&gt; [] },
     paginated: { type: Boolean, default: true },
     checkable: Boolean,
     currentPage: { type: Number, default: 1 },
@@ -56,21 +92,21 @@ export default {
     isSortable: { type: Boolean, default: true },
     displaySearchbar: { type: Boolean, default: true },
     defaultSort: [String, Array],
-    defaultSortDirection: { type: String, default: 'asc' },
+    defaultSortDirection: { type: String, default: &apos;asc&apos; },
     backendSorting: { type: Boolean },
     backendPagination: { type: Boolean },
     backendSearch: { type: Boolean },
     total: { type: [Number, String], default: 0 },
     selected: { type: Boolean },
-    rowClass: { type: Function, default: () => '' },
+    rowClass: { type: Function, default: () =&gt; &apos;&apos; },
     selectedRows: { type: Object },
-    isRowCheckable: { type: Function, default: () => true },
-    checkedRows: { type: Array, default: () => [] },
+    isRowCheckable: { type: Function, default: () =&gt; true },
+    checkedRows: { type: Array, default: () =&gt; [] },
     customIsChecked: Function,
     showDetails: { type: Boolean, default: false },
-    detailsOpened: { type: Array, default: () => [] },
-    detailKey: { type: String, default: '' },
-    detailsVisible: { type: Function, default: () => true },
+    detailsOpened: { type: Array, default: () =&gt; [] },
+    detailKey: { type: String, default: &apos;&apos; },
+    detailsVisible: { type: Function, default: () =&gt; true },
     isColumnCheckable: { type: Boolean, default: true },
     loading: { type: Boolean },
 
@@ -90,7 +126,7 @@ export default {
       }
       const currentPage = this.state.newCurrentPage;
       const itemsPerPage = this.itemsPerPage;
-      if (this.state.newRows.length <= itemsPerPage) {
+      if (this.state.newRows.length &lt;= itemsPerPage) {
         return this.state.newRows;
       }
       const start = (currentPage - 1) * itemsPerPage;
@@ -104,11 +140,11 @@ export default {
      */
     is_all_checked() {
       const validVisibleData = this.search_data.filter(
-        row => this.isRowCheckable(row));
+        row =&gt; this.isRowCheckable(row));
       if (validVisibleData.length === 0) {
         return false;
       }
-      const isAllChecked = validVisibleData.some(currentVisibleRow => this.state.newCheckedRows.indexOf(currentVisibleRow, this.customIsChecked) < 0);
+      const isAllChecked = validVisibleData.some(currentVisibleRow =&gt; this.state.newCheckedRows.indexOf(currentVisibleRow, this.customIsChecked) &lt; 0);
       return !isAllChecked;
     },
     /**
@@ -116,7 +152,7 @@ export default {
      * @returns {boolean}
      */
     is_all_uncheckable() {
-      const validVisibleData = this.paginate_data.filter(row => this.isRowCheckable(row));
+      const validVisibleData = this.paginate_data.filter(row =&gt; this.isRowCheckable(row));
       return validVisibleData.length === 0;
     },
 
@@ -127,15 +163,15 @@ export default {
      */
 
     search_data() {
-      if (this.state.search !== '') {
-        const matcher = new RegExp(this.state.search, 'gmi');
-        return this.state.newRows.filter(row => (_.map(row, value => matcher.test(`${value}`))).some(val => val));
+      if (this.state.search !== &apos;&apos;) {
+        const matcher = new RegExp(this.state.search, &apos;gmi&apos;);
+        return this.state.newRows.filter(row =&gt; (_.map(row, value =&gt; matcher.test(`${value}`))).some(val =&gt; val));
       }
 
       return this.paginate_data;
     },
     has_sortable_new_columns() {
-      return this.newColumns.some(column => column.sortable);
+      return this.newColumns.some(column =&gt; column.sortable);
     },
 
     /**
@@ -144,7 +180,7 @@ export default {
      */
 
     is_mobile() {
-      window.innerWidth < 768 ? this.state.mobile = true : this.state.mobile = false;
+      window.innerWidth &lt; 768 ? this.state.mobile = true : this.state.mobile = false;
       return this.state.mobile;
     },
   },
@@ -158,7 +194,7 @@ export default {
 
       this.state.newColumns = [];
       this.state.newRows = value;
-      this.$nextTick(() => {
+      this.$nextTick(() =&gt; {
         if (!this.state.newColumns.length) this.state.newColumns = saveNewColumns;
       });
       if (!this.backendPagination) {
@@ -180,13 +216,13 @@ export default {
       this.state.newColumns = [...value];
     },
     new_columns(newColumns) {
-      if (newColumns.length && this.state.firstTimeSort) {
+      if (newColumns.length &amp;&amp; this.state.firstTimeSort) {
         this.initialize_sort();
         this.state.firstTimeSort = false;
       } else if (newColumns.length) {
         if (this.state.currentSortColumn.field) {
           this.state.currentSortColumn =
-            newColumns.find(nc => nc.field === this.state.currentSortColumn.field);
+            newColumns.find(nc =&gt; nc.field === this.state.currentSortColumn.field);
         }
       }
     },
@@ -211,7 +247,7 @@ export default {
     },
 
     newValue(value) {
-      this.$emit('checkbox', value);
+      this.$emit(&apos;checkbox&apos;, value);
     },
 
 
@@ -230,17 +266,17 @@ export default {
     // SORTING FUNCTIONS
     sort_by(data, key, func, ascendant) {
       let sorted = [];
-      if (func && typeof func === 'function') {
-        sorted = [...data].sort((a, b) => func(a, b, ascendant));
+      if (func &amp;&amp; typeof func === &apos;function&apos;) {
+        sorted = [...data].sort((a, b) =&gt; func(a, b, ascendant));
       } else {
-        sorted = [...data].sort((a, b) => {
+        sorted = [...data].sort((a, b) =&gt; {
           let saveA = this.get_value_by_path(a, key);
           let saveB = this.get_value_by_path(b, key);
-          if (!saveA && saveA !== 0) return 1;
-          if (!saveB && saveB !== 0) return -1;
+          if (!saveA &amp;&amp; saveA !== 0) return 1;
+          if (!saveB &amp;&amp; saveB !== 0) return -1;
           if (saveA === saveB) return 0;
-          saveA = (typeof saveA === 'string') ? saveA.toUpperCase() : saveA;
-          saveB = (typeof saveB === 'string') ? saveB.toUpperCase() : saveB;
+          saveA = (typeof saveA === &apos;string&apos;) ? saveA.toUpperCase() : saveA;
+          saveB = (typeof saveB === &apos;string&apos;) ? saveB.toUpperCase() : saveB;
           return ascendant ? saveA.localeCompare(saveB) : saveB.localeCompare(saveA);
         });
       }
@@ -260,10 +296,10 @@ export default {
         return;
       }
       if (!updatingData) {
-        this.state.ascendant = column === this.state.currentSortColumn ? !this.state.ascendant : (this.defaultSortDirection.toLowerCase() !== 'desc');
+        this.state.ascendant = column === this.state.currentSortColumn ? !this.state.ascendant : (this.defaultSortDirection.toLowerCase() !== &apos;desc&apos;);
       }
       if (this.backendSorting) {
-        this.$emit('sort', column.field, this.state.ascendant ? 'asc' : 'desc');
+        this.$emit(&apos;sort&apos;, column.field, this.state.ascendant ? &apos;asc&apos; : &apos;desc&apos;);
       } else {
         this.state.newRows = this.sort_by(
           this.state.newRows,
@@ -284,7 +320,7 @@ export default {
       if (!this.defaultSort) {
         return;
       }
-      let sortField = '';
+      let sortField = &apos;&apos;;
       let sortDirection = this.defaultSortDirection;
       if (Array.isArray(this.defaultSort)) {
         sortField = this.defaultSort[0];
@@ -294,9 +330,9 @@ export default {
       } else {
         sortField = this.defaultSort;
       }
-      this.state.newColumns.forEach((column) => {
+      this.state.newColumns.forEach((column) =&gt; {
         if (column.field === sortField) {
-          this.state.ascendant = sortDirection.toLowerCase() !== 'desc';
+          this.state.ascendant = sortDirection.toLowerCase() !== &apos;desc&apos;;
           this.sort(column, true);
         }
       });
@@ -310,9 +346,9 @@ export default {
      * @event update:currentPage
      */
     change_page(page) {
-      this.state.newCurrentPage = page.current_page > 0 ? page.current_page : 1;
-      this.$emit('page-change', this.state.newCurrentPage);
-      this.$emit('update:currentPage', this.state.newCurrentPage);
+      this.state.newCurrentPage = page.current_page &gt; 0 ? page.current_page : 1;
+      this.$emit(&apos;page-change&apos;, this.state.newCurrentPage);
+      this.$emit(&apos;update:currentPage&apos;, this.state.newCurrentPage);
     },
 
     // SELECT ROW
@@ -322,12 +358,12 @@ export default {
      * @returns {boolean}
      */
     is_row_checked(row) {
-      return this.state.newCheckedRows.indexOf(row, this.customIsChecked) >= 0;
+      return this.state.newCheckedRows.indexOf(row, this.customIsChecked) &gt;= 0;
     },
 
     remove_checked_row(row) {
       const index = this.state.newCheckedRows.indexOf(row, this.customIsChecked);
-      if (index >= 0) {
+      if (index &gt;= 0) {
         this.state.newCheckedRows.splice(index, 1);
       }
     },
@@ -344,8 +380,8 @@ export default {
       } else {
         this.remove_checked_row(row);
       }
-      this.$emit('check', this.state.newCheckedRows, row);
-      this.$emit('update:checkedRows', this.state.newCheckedRows);
+      this.$emit(&apos;check&apos;, this.state.newCheckedRows, row);
+      this.$emit(&apos;update:checkedRows&apos;, this.state.newCheckedRows);
     },
 
     /**
@@ -357,7 +393,7 @@ export default {
 
     check_all() {
       const is_all_checked = this.is_all_checked;
-      this.search_data.forEach((currentRow) => {
+      this.search_data.forEach((currentRow) =&gt; {
         this.remove_checked_row(currentRow);
         if (!is_all_checked) {
           if (this.isRowCheckable(currentRow)) {
@@ -365,12 +401,12 @@ export default {
           }
         }
       });
-      this.$emit('check', this.state.newCheckedRows);
-      this.$emit('check-all', this.state.newCheckedRows);
-      this.$emit('update:checkedRows', this.state.newCheckedRows);
+      this.$emit(&apos;check&apos;, this.state.newCheckedRows);
+      this.$emit(&apos;check-all&apos;, this.state.newCheckedRows);
+      this.$emit(&apos;update:checkedRows&apos;, this.state.newCheckedRows);
     },
     get_value_by_path(obj, path) {
-      const value = path.split('.').reduce((o, i) => o[i], obj);
+      const value = path.split(&apos;.&apos;).reduce((o, i) =&gt; o[i], obj);
       return value;
     },
     // SELECT COLUMN
@@ -383,7 +419,7 @@ export default {
     check_column(column) {
       column.visible = !column.visible;
       this.state.visibilities[column.field] = column.visible;
-      this.$emit('check-column', column.visible, column.field);
+      this.$emit(&apos;check-column&apos;, column.visible, column.field);
     },
 
     /**
@@ -395,7 +431,7 @@ export default {
      */
     next_card() {
       this.state.currentCard++;
-      if (this.state.currentCard >= this.search_data.length) {
+      if (this.state.currentCard &gt;= this.search_data.length) {
         this.state.currentCard = 0;
       }
     },
@@ -404,7 +440,7 @@ export default {
      */
     previous_card() {
       this.state.currentCard--;
-      if (this.state.currentCard < 0) {
+      if (this.state.currentCard &lt; 0) {
         this.state.currentCard = this.search_data.length - 1;
       }
     },
@@ -426,12 +462,12 @@ export default {
 
       if (item) {
         this.close_detail_row(obj);
-        this.$emit('details-close', obj);
+        this.$emit(&apos;details-close&apos;, obj);
       } else {
         this.open_detail_row(obj);
-        this.$emit('details-open', obj);
+        this.$emit(&apos;details-open&apos;, obj);
       }
-      this.$emit('update:openedDetailed', this.state.visibleDetailRows);
+      this.$emit(&apos;update:openedDetailed&apos;, this.state.visibleDetailRows);
     },
 
     /**
@@ -458,7 +494,7 @@ export default {
      */
     is_visible_detail_row(obj) {
       const index = this.handle_detail_key(obj);
-      const result = this.state.visibleDetailRows.indexOf(index) >= 0;
+      const result = this.state.visibleDetailRows.indexOf(index) &gt;= 0;
       return result;
     },
 
@@ -468,3 +504,20 @@ export default {
     },
   },
 };
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

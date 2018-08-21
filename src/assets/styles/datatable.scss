@@ -146,6 +146,9 @@
   .selected {
     background-color: #23b7e5;
     color: white;
+    .details-button i {
+      color: white;
+    }
   }
 
   .pointer {
@@ -191,7 +194,7 @@
   .details-button {
     margin: 0 1rem;
     i {
-      color: white;
+      color: #23b7e5;
     }
   }
 
