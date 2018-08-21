@@ -15,7 +15,9 @@ const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : require('../config/prod.env')
 
+const APP_DIR = path.resolve( __dirname, "../src/");
 const webpackConfig = merge(baseWebpackConfig, {
+  entry: APP_DIR + '/main.js',
   module: {
     rules: utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,
