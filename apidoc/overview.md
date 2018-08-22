@@ -27,7 +27,7 @@ It consists on a table representation of informations whose data can be provided
     [![Image from Gyazo](https://i.gyazo.com/686d07aa39d26558eba28e1cc127b879.gif)](https://gyazo.com/686d07aa39d26558eba28e1cc127b879)
 - **Pagination**
 
-    For a better browsing on data, a maximum number of rows is displayed and others can be shown just by changing page.
+    For better browsing on data, a maximum number of rows is displayed and others can be shown just by changing page.
     
     [![Image from Gyazo](https://i.gyazo.com/f20817f0e25b874664ba9e3503a57303.gif)](https://gyazo.com/f20817f0e25b874664ba9e3503a57303)
 - **Show/Hide details**
@@ -49,12 +49,12 @@ It consists on a table representation of informations whose data can be provided
 
 ## Documentation
 
-The documentation is the doc directory.
-You cand find [here](https://superpitch-agency.github.io/vuex-table/) online documentation
+Documentation is in the ```docs``` directory.
+You can find [here](https://superpitch-agency.github.io/vuex-table/) online documentation.
 
     
 ## Collaborators
-  * [Superpitch team](http://superpitch.fr)
+[Superpitch team](http://superpitch.fr)
 
 ## License
 Code released under MIT license.

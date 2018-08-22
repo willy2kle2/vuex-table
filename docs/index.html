@@ -54,7 +54,7 @@ It consists on a table representation of informations whose data can be provided
 <p>  <a href="https://gyazo.com/686d07aa39d26558eba28e1cc127b879"><img src="https://i.gyazo.com/686d07aa39d26558eba28e1cc127b879.gif" alt="Image from Gyazo"></a></p>
 </li>
 <li><p><strong>Pagination</strong></p>
-<p>  For a better browsing on data, a maximum number of rows is displayed and others can be shown just by changing page.</p>
+<p>  For better browsing on data, a maximum number of rows is displayed and others can be shown just by changing page.</p>
 <p>  <a href="https://gyazo.com/f20817f0e25b874664ba9e3503a57303"><img src="https://i.gyazo.com/f20817f0e25b874664ba9e3503a57303.gif" alt="Image from Gyazo"></a></p>
 </li>
 <li><p><strong>Show/Hide details</strong></p>
@@ -70,11 +70,13 @@ It consists on a table representation of informations whose data can be provided
 <p>  <a href="https://gyazo.com/8861c6431cbf828f08fdcd314100cfc6"><img src="https://i.gyazo.com/8861c6431cbf828f08fdcd314100cfc6.gif" alt="Image from Gyazo"></a></p>
 </li>
 </ul>
-<h2 id="documentation">Documentation</h2><p>The documentation is the doc directory.
-You cand find <a href="https://superpitch-agency.github.io/vuex-table/">here</a> online documentation</p>
+<h2 id="documentation">Documentation</h2><p>Documentation is in the <code>docs</code> directory.
+You can find <a href="https://superpitch-agency.github.io/vuex-table/">here</a> online documentation.</p>
 <h2 id="quick-start">Quick start</h2><h3 id="install">Install</h3><pre><code><code class="source-code prettyprint">npm install --save vuex-table</code>
 </code></pre><h3 id="import">Import</h3><pre><code><code class="source-code prettyprint">import Vue from &apos;vue&apos;;
-import VuexTable from &apos;vuex-table&apos;;</code>
+const VuexTable = require(&apos;vuex-table&apos;);
+
+Vue.use(VuexTable);</code>
 </code></pre><h3 id="example">Example</h3><pre><code><code class="source-code prettyprint"> &lt;template&gt;
    &lt;div id=&quot;app&quot;&gt;
      &lt;datatable :rows=&quot;state.rows&quot; :columns=&quot;state.columns&quot;
@@ -151,9 +153,7 @@ import VuexTable from &apos;vuex-table&apos;;</code>
    }
  &lt;/style&gt;
 </code>
-</code></pre><h2 id="collaborators">Collaborators</h2><ul>
-<li><a href="http://superpitch.fr">Superpitch team</a></li>
-</ul>
+</code></pre><h2 id="collaborators">Collaborators</h2><p><a href="http://superpitch.fr">Superpitch team</a></p>
 <h2 id="license">License</h2><p>Code released under MIT license.</p>
 <p>Copyright (c) 2018, <a href="http://superpitch.fr">Superpitch</a>.</p>
 </div>

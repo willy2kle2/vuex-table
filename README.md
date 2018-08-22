@@ -25,7 +25,7 @@
     
 - **Pagination**
 
-    For a better browsing on data, a maximum number of rows is displayed and others can be shown just by changing page.
+    For better browsing on data, a maximum number of rows is displayed and others can be shown just by changing page.
     
     [![Image from Gyazo](https://i.gyazo.com/f20817f0e25b874664ba9e3503a57303.gif)](https://gyazo.com/f20817f0e25b874664ba9e3503a57303)
     
@@ -49,8 +49,8 @@
     
 ## Documentation
 
-The documentation is the doc directory.
-You cand find [here](https://superpitch-agency.github.io/vuex-table/) online documentation
+Documentation is in the ```docs``` directory.
+You can find [here](https://superpitch-agency.github.io/vuex-table/) online documentation.
 
 ## Quick start
 
@@ -65,7 +65,9 @@ npm install --save vuex-table
 
 ```
 import Vue from 'vue';
-import VuexTable from 'vuex-table';
+const VuexTable = require('vuex-table');
+
+Vue.use(VuexTable);
 ```
  
  ### Example
@@ -150,7 +152,7 @@ import VuexTable from 'vuex-table';
  ```
    
 ## Collaborators
-  * [Superpitch team](http://superpitch.fr)
+[Superpitch team](http://superpitch.fr)
 
 ## License
 Code released under MIT license.
