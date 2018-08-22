@@ -5,7 +5,7 @@ import VuexTable from '../src/components/datatable/Datatable.vue';
 export function install(Vue) {
   if (install.installed) return;
   install.installed = true;
-  Vue.component('VuexTable', VuexTable);
+  Vue.component('vuex-table', VuexTable);
 }
 
 // Create module definition for Vue.use()

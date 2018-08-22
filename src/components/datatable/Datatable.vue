@@ -87,7 +87,7 @@
       </tbody>
     </table>
     <div class="row-container desktop-display">
-      <div class="paginator-container">
+      <div class="col col-md-12 text-center">
         <paginator :number-of-items="this.rows.length" :items-per-page="this.itemsPerPage" :skip="0"
                    v-if="paginated" @page-change="change_page"
                    :current_page="state.newCurrentPage"></paginator>
