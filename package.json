@@ -1,10 +1,10 @@
 {
   "name": "vuex-table",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A vuex Datatable",
   "author": "Federica Alfano <federica.alfano@superpitch.fr>",
   "private": false,
-  "main" : "src/wrapper.js",
+  "main": "src/wrapper.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
