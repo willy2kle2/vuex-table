@@ -40,7 +40,6 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const _ = require(&apos;lodash&apos;);
 
 export default {
-  methods: {
     truncate(input, size, ellipsis) {
       const total_size = size + ellipsis.length;
       if (input.length &gt; total_size) {
@@ -172,7 +171,6 @@ export default {
         return obj;
       }, object);
     },
-  },
 };
 </code></pre>
 

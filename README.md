@@ -82,12 +82,11 @@ Vue.use(VuexTable);
  ```
  <template>
    <div id="app">
-     <datatable :rows="state.rows" :columns="state.columns"
+     <datatable :rows="state.rows" 
+                :columns="state.columns"
                 :itemsPerPage="state.itemsPerPage"
-                :current-page.sync="state.currentPage"
                 :selected.sync="state.selected" :checked-rows.sync="state.checkedRows" checkable
-                :default-sort-direction="state.defaultSortOrder"
-                :default-sort="[state.sortField, state.sortOrder]"
+ 
      >
      </datatable>
  
@@ -110,7 +109,7 @@ Vue.use(VuexTable);
              {label: 'First Name', field: 'first_name', visible: true},
              {label: 'Last Name', field: 'last_name', visible: true},
              {label: 'Date', field: 'date', visible: true},
-             {label: 'Gender', gender: 'gender', visible: true},
+             {label: 'Gender', field: 'gender', visible: true},
            ],
            rows: [
              {id: 1, first_name: 'Jesse', last_name: 'Simmons', date: '2016-10-15 13:43:27', gender: 'Male'},
@@ -131,13 +130,9 @@ Vue.use(VuexTable);
              {id: 16, first_name: 'Anne', last_name: 'Lee', date: '2016-12-06 14:38:38', gender: 'Female'},
            ],
            itemsPerPage: 10,
-           itemsPerRow: 1,
-           currentPage: 1,
            selected: true,
            checkedRows: [],
-           sortField: 'name',
-           sortOrder: 'desc',
-           defaultSortOrder: 'desc',
+          
  
          }
        }

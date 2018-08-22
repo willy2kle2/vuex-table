@@ -84,12 +84,11 @@ const VuexTable = require(&apos;vuex-table&apos;);
 Vue.use(VuexTable);</code>
 </code></pre><h3 id="example">Example</h3><pre><code><code class="source-code prettyprint"> &lt;template&gt;
    &lt;div id=&quot;app&quot;&gt;
-     &lt;datatable :rows=&quot;state.rows&quot; :columns=&quot;state.columns&quot;
+     &lt;datatable :rows=&quot;state.rows&quot; 
+                :columns=&quot;state.columns&quot;
                 :itemsPerPage=&quot;state.itemsPerPage&quot;
-                :current-page.sync=&quot;state.currentPage&quot;
                 :selected.sync=&quot;state.selected&quot; :checked-rows.sync=&quot;state.checkedRows&quot; checkable
-                :default-sort-direction=&quot;state.defaultSortOrder&quot;
-                :default-sort=&quot;[state.sortField, state.sortOrder]&quot;
+
      &gt;
      &lt;/datatable&gt;
 
@@ -112,7 +111,7 @@ Vue.use(VuexTable);</code>
              {label: &apos;First Name&apos;, field: &apos;first_name&apos;, visible: true},
              {label: &apos;Last Name&apos;, field: &apos;last_name&apos;, visible: true},
              {label: &apos;Date&apos;, field: &apos;date&apos;, visible: true},
-             {label: &apos;Gender&apos;, gender: &apos;gender&apos;, visible: true},
+             {label: &apos;Gender&apos;, field: &apos;gender&apos;, visible: true},
            ],
            rows: [
              {id: 1, first_name: &apos;Jesse&apos;, last_name: &apos;Simmons&apos;, date: &apos;2016-10-15 13:43:27&apos;, gender: &apos;Male&apos;},
@@ -133,13 +132,9 @@ Vue.use(VuexTable);</code>
              {id: 16, first_name: &apos;Anne&apos;, last_name: &apos;Lee&apos;, date: &apos;2016-12-06 14:38:38&apos;, gender: &apos;Female&apos;},
            ],
            itemsPerPage: 10,
-           itemsPerRow: 1,
-           currentPage: 1,
            selected: true,
            checkedRows: [],
-           sortField: &apos;name&apos;,
-           sortOrder: &apos;desc&apos;,
-           defaultSortOrder: &apos;desc&apos;,
+
 
          }
        }
