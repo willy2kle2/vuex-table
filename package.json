@@ -1,6 +1,6 @@
 {
   "name": "vuex-table",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "A vuex Datatable",
   "author": "Federica Alfano <federica.alfano@superpitch.fr>",
   "private": false,
