@@ -70,7 +70,7 @@
                   <slot :name="column.field" :index="index" :data="column.field" :label="column.label"
                         :visible="state.visibilities[column.field]">
                     <column :visible="state.visibilities[column.field]" :label="column.label" :field="column.field">
-                      <span class="cell">{{row[column.field]}}</span>
+                      <span class=“cell”>{{_oa_find(row, column.field, "")}}</span>
                     </column>
                   </slot>
                 </div>
