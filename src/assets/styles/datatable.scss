@@ -204,6 +204,10 @@
     justify-content: space-between;
     margin: 1rem 1rem;
     font-size: 1.2rem;
+
+    label {
+      margin-right: 0.8rem;
+    }
   }
 
   .loading {

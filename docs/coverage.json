@@ -1,6 +1,15 @@
 {
-  "coverage": "0%",
-  "expectCount": 0,
-  "actualCount": 0,
-  "files": {}
+  "coverage": "33.33%",
+  "expectCount": 3,
+  "actualCount": 1,
+  "files": {
+    "src/wrapper.js": {
+      "expectCount": 3,
+      "actualCount": 1,
+      "undocumentLines": [
+        18,
+        23
+      ]
+    }
+  }
 }

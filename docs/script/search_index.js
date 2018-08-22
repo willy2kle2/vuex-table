@@ -1,5 +1,23 @@
 window.esdocSearchIndex = [
   [
+    "vuex-table~globalvue",
+    "variable/index.html#static-variable-GlobalVue",
+    "<span>GlobalVue</span> <span class=\"search-result-import-path\">vuex-table</span>",
+    "variable"
+  ],
+  [
+    "vuex-table~install",
+    "function/index.html#static-function-install",
+    "<span>install</span> <span class=\"search-result-import-path\">vuex-table</span>",
+    "function"
+  ],
+  [
+    "vuex-table~plugin",
+    "variable/index.html#static-variable-plugin",
+    "<span>plugin</span> <span class=\"search-result-import-path\">vuex-table</span>",
+    "variable"
+  ],
+  [
     "",
     "test-file/test/unit/specs/Datatable.spec.js.html#lineNumber11",
     "Datatable.vue",
@@ -363,6 +381,12 @@ window.esdocSearchIndex = [
     "src/utils/utils.js",
     "file/src/utils/Utils.js.html",
     "src/utils/Utils.js",
+    "file"
+  ],
+  [
+    "src/wrapper.js",
+    "file/src/wrapper.js.html",
+    "src/wrapper.js",
     "file"
   ],
   [
