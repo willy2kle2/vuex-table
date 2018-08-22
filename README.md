@@ -49,7 +49,7 @@
     
 ## Documentation 📔
 
-Documentation is in the ``docs``` directory.
+Documentation is in the ```docs``` directory.
 You can find [here](https://superpitch-agency.github.io/vuex-table/) online documentation.
 
 ## Quick start 🚀
