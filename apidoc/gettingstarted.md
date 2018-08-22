@@ -10,6 +10,12 @@
 npm install --save vuex-table
 ```
 
+or
+```
+yarn add vuex-table
+```
+
+
 ### Import
 
 ```

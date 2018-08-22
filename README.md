@@ -1,9 +1,9 @@
-# vuex-table
+# Vuex-table
 
 > Vuex-table is a Vue component created in order to easily fit in any Vue (even with Vuex) project.
 > It consists on a table representation of informations whose data can be provided both from frontend or backend.
 
-## Features
+## Features ⚙
 
 - **Sorting**
     
@@ -47,12 +47,13 @@
     
     [![Image from Gyazo](https://i.gyazo.com/8861c6431cbf828f08fdcd314100cfc6.gif)](https://gyazo.com/8861c6431cbf828f08fdcd314100cfc6)
     
-## Documentation
+## Documentation 📔
 
-Documentation is in the ```docs``` directory.
+Documentation is in the ``docs``` directory.
 You can find [here](https://superpitch-agency.github.io/vuex-table/) online documentation.
 
-## Quick start
+## Quick start ✅
+> Pss...it's easy! 😎
 
 
 ### Install
@@ -61,12 +62,18 @@ You can find [here](https://superpitch-agency.github.io/vuex-table/) online docu
 npm install --save vuex-table
 ```
 
-### Import
+or
+```
+yarn add vuex-table
+```
+
+
+### Import 
 
 ```
 import Vue from 'vue';
 const VuexTable = require('vuex-table');
-
+ 
 Vue.use(VuexTable);
 ```
  
@@ -151,7 +158,7 @@ Vue.use(VuexTable);
  
  ```
    
-## Collaborators
+## Collaborators 👩🏻‍💻👨🏼‍💻
 [Superpitch team](http://superpitch.fr)
 
 ## License
