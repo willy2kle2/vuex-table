@@ -10,11 +10,19 @@
 npm install --save vuex-table
 ```
 
+or
+```
+yarn add vuex-table
+```
+
+
 ### Import
 
 ```
 import Vue from 'vue';
-import VuexTable from 'vuex-table';
+const VuexTable = require('vuex-table');
+
+Vue.use(VuexTable);
 ```
 
 ### Example

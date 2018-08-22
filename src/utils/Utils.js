@@ -1,7 +1,6 @@
 const _ = require('lodash');
 
 export default {
-  methods: {
     truncate(input, size, ellipsis) {
       const total_size = size + ellipsis.length;
       if (input.length > total_size) {
@@ -133,5 +132,4 @@ export default {
         return obj;
       }, object);
     },
-  },
 };
