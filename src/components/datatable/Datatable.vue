@@ -19,7 +19,7 @@
                  :disabled="is_all_uncheckable"
                  @change="check_all"/>
         </div>
-        <div v-for="column in state.newColumns" :key="index" @click.stop="sort(column)"
+        <div v-for="(column, index) in state.newColumns" :key="index" @click.stop="sort(column)"
              :class="['row-container', state.currentSortColumn === column ? 'current-sort' : '', column ? 'sortable' : '']"
              v-if="column.visible">
           <div class="cell">
@@ -65,9 +65,9 @@
                      :class="['fa fa-chevron-right', is_visible_detail_row(row) ? 'expanded' : '']"
                      aria-hidden="true"></i>
                 </a>
-                <div v-for="(column, index) in state.newColumns" :key="index" class="cell"
+                <div v-for="(column, index2) in state.newColumns" :key="index2" class="cell"
                      v-if="state.visibilities[column.field]">
-                  <slot :name="column.field" :index="index" :data="column.field" :label="column.label"
+                  <slot :name="column.field" :index="index2" :data="column.field" :label="column.label"
                         :visible="state.visibilities[column.field]">
                     <column :visible="state.visibilities[column.field]" :label="column.label" :field="column.field">
                       <span class=“cell”>{{_oa_find(row, column.field, "")}}</span>
