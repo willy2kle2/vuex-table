@@ -118,5 +118,18 @@
     "snapshotSerializers": [
       "<rootDir>/node_modules/jest-serializer-vue"
     ]
-  }
+  },
+  "keywords": [
+    "datatable",
+    "vuejs",
+    "vuex",
+    "data",
+    "table",
+    "vue",
+    "sort",
+    "plugin",
+    "test",
+    "rows",
+    "component"
+  ]
 }
