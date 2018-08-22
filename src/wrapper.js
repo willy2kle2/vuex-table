@@ -1,5 +1,11 @@
 // Import vue component
 import VuexTable from '../src/components/datatable/Datatable.vue';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+import 'font-awesome/css/font-awesome.css';
+import './assets/styles/datatable.scss';
+import './assets/styles/paginator.scss';
+
 
 // Declare install function executed by Vue.use()
 export function install(Vue) {

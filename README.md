@@ -1,6 +1,6 @@
 # vuex-table
 
-> Vuex-table is Vue component created in order to easily fit in any Vue (even with Vuex) project.
+> Vuex-table is a Vue component created in order to easily fit in any Vue (even with Vuex) project.
 > It consists on a table representation of informations whose data can be provided both from frontend or backend.
 
 ## Features
