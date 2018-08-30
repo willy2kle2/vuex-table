@@ -6,7 +6,8 @@
     <div class="checkbox-container" v-if="isColumnCheckable && !is_mobile">
       <div v-for="(column, index) in state.newColumns" :key="index">
         <label>{{column.label}}</label>
-        <input type="checkbox" class="datatable-checkbox checkbox-all inline-block" @change.sync="check_column(column)"
+        <input type="checkbox" class="datatable-checkbox checkbox-all inline-block"
+               @change.sync="check_column(column)"
                :value="column.field" checked>
       </div>
     </div>
@@ -19,12 +20,15 @@
                  :disabled="is_all_uncheckable"
                  @change="check_all"/>
         </div>
-        <div v-for="(column, index) in state.newColumns" :key="index" @click.stop="sort(column)"
-             :class="['row-container', state.currentSortColumn === column ? 'current-sort' : '', column ? 'sortable' : '']"
-             v-if="column.visible">
+        <div v-for="column in state.newColumns" :key="index" @click.stop="sort(column)" :class="[
+                                'row-container',
+                                state.currentSortColumn === column ? 'current-sort' : '',
+                                column.sortable && isSortable ? 'sortable' : ''
+                            ]" v-if="column.visible">
           <div class="cell">
             <template>{{ column.label }}</template>
-            <i aria-hidden="true" :class="[state.ascendant ? 'fa-chevron-down' : 'fa-chevron-up', 'fa data-icon']"
+            <i aria-hidden="true"
+               :class="[state.ascendant ? 'fa-chevron-down' : 'fa-chevron-up', 'fa data-icon']"
                v-show="state.currentSortColumn === column"></i>
           </div>
         </div>
@@ -48,7 +52,8 @@
                  class=" border-table data-row"
                  v-show="is_mobile? index === state.currentCard : true ">
               <div class="datatable-checkbox">
-                <input type="checkbox" class="datatable-checkbox inline-block" :disabled="!isRowCheckable(row)"
+                <input type="checkbox" class="datatable-checkbox inline-block"
+                       :disabled="!isRowCheckable(row)"
                        :value="is_row_checked(row)"
                        @change="check_row(row)" :checked="is_all_checked || is_row_checked(row)"/>
               </div>
@@ -65,13 +70,15 @@
                      :class="['fa fa-chevron-right', is_visible_detail_row(row) ? 'expanded' : '']"
                      aria-hidden="true"></i>
                 </a>
-                <div v-for="(column, index2) in state.newColumns" :key="index2" class="cell"
+                <div v-for="(column, index2) in state.newColumns" :key="index" class="cell"
                      v-if="state.visibilities[column.field]">
-                  <slot :name="column.field" :index="index2" :data="column.field" :label="column.label"
+                  <slot :name="column.field" :indexCol="index1" :indexRow="index" :data="_oa_find(row, column.field)"
+                        :label="column.label"
                         :visible="state.visibilities[column.field]">
-                    <column :visible="state.visibilities[column.field]" :label="column.label" :field="column.field">
-                      <span class=“cell”>{{_oa_find(row, column.field, "")}}</span>
-                    </column>
+                    <data-column :visible="state.visibilities[column.field]" :label="column.label"
+                                 :field="column.field">
+                      <span class="cell">{{_oa_find(row, column.field, '')}}</span>
+                    </data-column>
                   </slot>
                 </div>
               </div>
@@ -97,10 +104,7 @@
   </div>
 </template>
 
-<script src="./Datatable.js">
-
+<script>
+  module.exports = require('./Datatable');
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-</style>
