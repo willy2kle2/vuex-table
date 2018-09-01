@@ -4,7 +4,7 @@
   "description": "A vuex Datatable",
   "author": "Federica Alfano <federica.alfano@superpitch.fr>",
   "private": false,
-  "main": "src/wrapper.js",
+  "main": "dist/vuex-table.js",
   "homepage": "https://github.com/superpitch-agency/vuex-table",
   "repository": "https://github.com/superpitch-agency/vuex-table",
   "license": "MIT",

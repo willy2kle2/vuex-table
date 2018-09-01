@@ -2,7 +2,8 @@
  * @name Datatable
  * @author Federica Alfano <federica.alfano@superpitch.fr>
  * @author Corentin Ribeyre <corentin.ribeyre@superpitch.fr>
- * @fileOverview This file contains all methods, props, computed properties and watchers that are necessary for datatable to work correctly.
+ * @fileOverview This file contains all methods, props,
+ * computed properties and watchers that are necessary for datatable to work correctly.
  * Basic functions:
  * @see [paginate_data]{@link Datatable#paginate_data}
  * @see [search_data]{@link Datatable#search_data}
@@ -12,7 +13,7 @@
  * @see [check_column]{@link Datatable#check_column}
  * @see [check_details]{@link Datatable#toggle_details}
  */
-
+import _ from 'lodash';
 import OAMixin from '../../mixins/ObjectAccessMixin';
 import Column from '../column/Column.vue';
 import Paginator from '../paginator/Paginator.vue';
@@ -39,7 +40,7 @@ export default {
         visibleDetailRows: this.detailsOpened,
         newValue: this.value,
         visibilities: this.columns.reduce((obj, v) => {
-          obj[v.field] = v.visible || true;
+          obj[v.field] = v.visible || true; // eslint-disable-line
           return obj;
         }, {}),
       },
@@ -108,7 +109,8 @@ export default {
       if (validVisibleData.length === 0) {
         return false;
       }
-      const isAllChecked = validVisibleData.some(currentVisibleRow => this.state.newCheckedRows.indexOf(currentVisibleRow, this.customIsChecked) < 0);
+      const isAllChecked = validVisibleData.some(currentVisibleRow =>
+        this.state.newCheckedRows.indexOf(currentVisibleRow, this.customIsChecked) < 0);
       return !isAllChecked;
     },
     /**
@@ -144,6 +146,7 @@ export default {
      */
 
     is_mobile() {
+      // eslint-disable-next-line no-unused-expressions
       window.innerWidth < 768 ? this.state.mobile = true : this.state.mobile = false;
       return this.state.mobile;
     },
@@ -356,10 +359,10 @@ export default {
      */
 
     check_all() {
-      const is_all_checked = this.is_all_checked;
+      const isAllChecked = this.is_all_checked;
       this.search_data.forEach((currentRow) => {
         this.remove_checked_row(currentRow);
-        if (!is_all_checked) {
+        if (!isAllChecked) {
           if (this.isRowCheckable(currentRow)) {
             this.state.newCheckedRows.push(currentRow);
           }
@@ -381,20 +384,21 @@ export default {
      * @event check-column
      */
     check_column(column) {
-      column.visible = !column.visible;
+      column.visible = !column.visible; // eslint-disable-line no-param-reassign
       this.state.visibilities[column.field] = column.visible;
       this.$emit('check-column', column.visible, column.field);
     },
 
     /**
-     * Functions called when datatable is diplayed on a mobile device and user browses different rows
+     * Functions called when datatable is diplayed on a mobile device
+     * and user browses different rows
      */
     // MOBILE
     /**
      * Function to display next row
      */
     next_card() {
-      this.state.currentCard++;
+      this.state.currentCard += 1;
       if (this.state.currentCard >= this.search_data.length) {
         this.state.currentCard = 0;
       }
@@ -403,7 +407,7 @@ export default {
      * Function to display previous row
      */
     previous_card() {
-      this.state.currentCard--;
+      this.state.currentCard -= 1;
       if (this.state.currentCard < 0) {
         this.state.currentCard = this.search_data.length - 1;
       }
