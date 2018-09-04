@@ -28,7 +28,7 @@
 
 <nav class="navigation" data-ice="nav"><div>
   <ul>
-    
+
   <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-install">install</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GlobalVue">GlobalVue</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-plugin">plugin</a></span></span></li>
@@ -91,9 +91,9 @@ describe(&apos;Datatable.vue&apos;, () =&gt; {
       search: &apos;Jesse&apos;,
     };
     const component = mount(Datatable, {propsData: props});
-    expect(component.vm.paginate_data.length).toEqual(3);
-    expect(component.vm.is_all_checked).toBe(false);
-    expect(component.vm.search_data.length).toEqual(3);
+    expect(component.vm.paginateData.length).toEqual(3);
+    expect(component.vm.isAllChecked).toBe(false);
+    expect(component.vm.searchData.length).toEqual(3);
   });
 
   it(&apos;has sorting methods working correctly&apos;, () =&gt; {
@@ -101,8 +101,8 @@ describe(&apos;Datatable.vue&apos;, () =&gt; {
       {label: &apos;ID&apos;, field: &apos;id&apos;},
       {label: &apos;First Name&apos;, field: &apos;first_name&apos;}
     ];
-    const sortByStub = sinon.stub(wrapper.vm, &apos;sort_by&apos;).returns(mockedObjects);
-    const result = wrapper.vm.sort_by();
+    const sortByStub = sinon.stub(wrapper.vm, &apos;sortBy&apos;).returns(mockedObjects);
+    const result = wrapper.vm.sortBy();
 
     expect(result).toBe(mockedObjects);
     sortByStub.restore();
@@ -115,8 +115,8 @@ describe(&apos;Datatable.vue&apos;, () =&gt; {
       {id: 2, first_name: &apos;John&apos;, last_name: &apos;Jacobs&apos;, date: &apos;2016-12-15 06:00:53&apos;, gender: &apos;Male&apos;},
       {id: 3, first_name: &apos;Tina&apos;, last_name: &apos;Gilbert&apos;, date: &apos;2016-04-26 06:26:28&apos;, gender: &apos;Female&apos;},
     ];
-    const checkStub = sinon.stub(wrapper.vm, &apos;check_all&apos;).returns(mockedObjects);
-    const result = wrapper.vm.check_all();
+    const checkStub = sinon.stub(wrapper.vm, &apos;checkAll&apos;).returns(mockedObjects);
+    const result = wrapper.vm.checkAll();
 
     expect(result).toBe(mockedObjects);
     checkStub.restore();
@@ -140,8 +140,8 @@ describe(&apos;Datatable.vue&apos;, () =&gt; {
       currentPage: 1,
     };
     const component = mount(Datatable, {propsData: props});
-    const pageStub = sinon.stub(component.vm, &apos;change_page&apos;).returns(props);
-    const result = component.vm.change_page(2);
+    const pageStub = sinon.stub(component.vm, &apos;changePage&apos;).returns(props);
+    const result = component.vm.changePage(2);
 
     expect(result).toBe(props);
     pageStub.restore();

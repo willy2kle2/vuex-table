@@ -387,9 +387,9 @@
                                       "line": 7,
                                       "column": 18
                                     },
-                                    "identifierName": "first_page"
+                                    "identifierName": "firstPage"
                                   },
-                                  "name": "first_page"
+                                  "name": "firstPage"
                                 },
                                 "value": {
                                   "type": "NumericLiteral",
@@ -442,9 +442,9 @@
                                       "line": 8,
                                       "column": 20
                                     },
-                                    "identifierName": "current_page"
+                                    "identifierName": "currentPage"
                                   },
-                                  "name": "current_page"
+                                  "name": "currentPage"
                                 },
                                 "value": {
                                   "type": "NumericLiteral",
@@ -497,9 +497,9 @@
                                       "line": 9,
                                       "column": 17
                                     },
-                                    "identifierName": "last_page"
+                                    "identifierName": "lastPage"
                                   },
-                                  "name": "last_page"
+                                  "name": "lastPage"
                                 },
                                 "value": {
                                   "type": "NumericLiteral",
@@ -976,9 +976,9 @@
                                     "line": 19,
                                     "column": 37
                                   },
-                                  "identifierName": "last_page"
+                                  "identifierName": "lastPage"
                                 },
-                                "name": "last_page"
+                                "name": "lastPage"
                               },
                               "computed": false
                             }
@@ -1123,9 +1123,9 @@
                                     "line": 22,
                                     "column": 29
                                   },
-                                  "identifierName": "current_page"
+                                  "identifierName": "currentPage"
                                 },
-                                "name": "current_page"
+                                "name": "currentPage"
                               },
                               "computed": false
                             },
@@ -1541,9 +1541,9 @@
                                           "line": 24,
                                           "column": 62
                                         },
-                                        "identifierName": "current_page"
+                                        "identifierName": "currentPage"
                                       },
-                                      "name": "current_page"
+                                      "name": "currentPage"
                                     },
                                     "value": {
                                       "type": "Identifier",
@@ -1801,9 +1801,9 @@
                                     "line": 29,
                                     "column": 26
                                   },
-                                  "identifierName": "last_page"
+                                  "identifierName": "lastPage"
                                 },
-                                "name": "last_page"
+                                "name": "lastPage"
                               },
                               "computed": false
                             },
@@ -2138,9 +2138,9 @@
                                     "line": 32,
                                     "column": 29
                                   },
-                                  "identifierName": "current_page"
+                                  "identifierName": "currentPage"
                                 },
-                                "name": "current_page"
+                                "name": "currentPage"
                               },
                               "computed": false
                             },
@@ -2515,9 +2515,9 @@
                               "line": 37,
                               "column": 24
                             },
-                            "identifierName": "last_page"
+                            "identifierName": "lastPage"
                           },
-                          "name": "last_page"
+                          "name": "lastPage"
                         },
                         "computed": false
                       },
@@ -2806,9 +2806,9 @@
                               "line": 38,
                               "column": 27
                             },
-                            "identifierName": "current_page"
+                            "identifierName": "currentPage"
                           },
-                          "name": "current_page"
+                          "name": "currentPage"
                         },
                         "computed": false
                       },
@@ -3929,7 +3929,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "first_page",
+      "value": "firstPage",
       "start": 137,
       "end": 147,
       "loc": {
@@ -4034,7 +4034,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "current_page",
+      "value": "currentPage",
       "start": 160,
       "end": 172,
       "loc": {
@@ -4139,7 +4139,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "last_page",
+      "value": "lastPage",
       "start": 185,
       "end": 194,
       "loc": {
@@ -5281,7 +5281,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "last_page",
+      "value": "lastPage",
       "start": 353,
       "end": 362,
       "loc": {
@@ -5542,7 +5542,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "current_page",
+      "value": "currentPage",
       "start": 407,
       "end": 419,
       "loc": {
@@ -6331,7 +6331,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "current_page",
+      "value": "currentPage",
       "start": 549,
       "end": 561,
       "loc": {
@@ -6897,7 +6897,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "last_page",
+      "value": "lastPage",
       "start": 643,
       "end": 652,
       "loc": {
@@ -7521,7 +7521,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "current_page",
+      "value": "currentPage",
       "start": 741,
       "end": 753,
       "loc": {
@@ -8328,7 +8328,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "last_page",
+      "value": "lastPage",
       "start": 870,
       "end": 879,
       "loc": {
@@ -8828,7 +8828,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "current_page",
+      "value": "currentPage",
       "start": 948,
       "end": 960,
       "loc": {

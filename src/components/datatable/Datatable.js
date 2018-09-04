@@ -2,17 +2,18 @@
  * @name Datatable
  * @author Federica Alfano <federica.alfano@superpitch.fr>
  * @author Corentin Ribeyre <corentin.ribeyre@superpitch.fr>
- * @fileOverview This file contains all methods, props, computed properties and watchers that are necessary for datatable to work correctly.
+ * @fileOverview This file contains all methods, props,
+ * computed properties and watchers that are necessary for datatable to work correctly.
  * Basic functions:
- * @see [paginate_data]{@link Datatable#paginate_data}
- * @see [search_data]{@link Datatable#search_data}
- * @see [change_page]{@link Datatable#change_page}
- * @see [check_row]{@link Datatable#check_row}
- * @see [check_all]{@link Datatable#check_all}
- * @see [check_column]{@link Datatable#check_column}
- * @see [check_details]{@link Datatable#toggle_details}
+ * @see [paginateData]{@link Datatable#paginateData}
+ * @see [searchData]{@link Datatable#searchData}
+ * @see [changePage]{@link Datatable#changePage}
+ * @see [checkRow]{@link Datatable#checkRow}
+ * @see [checkAll]{@link Datatable#checkAll}
+ * @see [checkColumn]{@link Datatable#checkColumn}
+ * @see [check_details]{@link Datatable#toggleDetails}
  */
-
+import _ from 'lodash';
 import OAMixin from '../../mixins/ObjectAccessMixin';
 import Column from '../column/Column.vue';
 import Paginator from '../paginator/Paginator.vue';
@@ -39,7 +40,7 @@ export default {
         visibleDetailRows: this.detailsOpened,
         newValue: this.value,
         visibilities: this.columns.reduce((obj, v) => {
-          obj[v.field] = v.visible || true;
+          obj[v.field] = v.visible || true; // eslint-disable-line
           return obj;
         }, {}),
       },
@@ -84,7 +85,7 @@ export default {
      *  @param End point, corresponding to itemsPerPage
      *  @returns {array} Rows between start
      */
-    paginate_data() {
+    paginateData() {
       if (!this.paginated) {
         return this.state.newRows;
       }
@@ -102,21 +103,22 @@ export default {
      * Function filtering on all rows to see whether all rows are checked or not
      * @returns {boolean}
      */
-    is_all_checked() {
-      const validVisibleData = this.search_data.filter(
+    isAllChecked() {
+      const validVisibleData = this.searchData.filter(
         row => this.isRowCheckable(row));
       if (validVisibleData.length === 0) {
         return false;
       }
-      const isAllChecked = validVisibleData.some(currentVisibleRow => this.state.newCheckedRows.indexOf(currentVisibleRow, this.customIsChecked) < 0);
+      const isAllChecked = validVisibleData.some(currentVisibleRow =>
+        this.state.newCheckedRows.indexOf(currentVisibleRow, this.customIsChecked) < 0);
       return !isAllChecked;
     },
     /**
      * Function filtering on all rows to detect rows that can be unchecked.
      * @returns {boolean}
      */
-    is_all_uncheckable() {
-      const validVisibleData = this.paginate_data.filter(row => this.isRowCheckable(row));
+    isAllUncheckable() {
+      const validVisibleData = this.paginateData.filter(row => this.isRowCheckable(row));
       return validVisibleData.length === 0;
     },
 
@@ -126,15 +128,15 @@ export default {
      * @returns {array}
      */
 
-    search_data() {
+    searchData() {
       if (this.state.search !== '') {
         const matcher = new RegExp(this.state.search, 'gmi');
         return this.state.newRows.filter(row => (_.map(row, value => matcher.test(`${value}`))).some(val => val));
       }
 
-      return this.paginate_data;
+      return this.paginateData;
     },
-    has_sortable_new_columns() {
+    hasSortableNewColumns() {
       return this.newColumns.some(column => column.sortable);
     },
 
@@ -143,7 +145,8 @@ export default {
      * @returns {boolean}
      */
 
-    is_mobile() {
+    isMobile() {
+      // eslint-disable-next-line no-unused-expressions
       window.innerWidth < 768 ? this.state.mobile = true : this.state.mobile = false;
       return this.state.mobile;
     },
@@ -153,7 +156,7 @@ export default {
      * Watcher for setting columns and rows after user interaction
      * @param value
      */
-    set_data(value) {
+    setData(value) {
       const saveNewColumns = this.state.newColumns;
 
       this.state.newColumns = [];
@@ -179,9 +182,9 @@ export default {
     columns(value) {
       this.state.newColumns = [...value];
     },
-    new_columns(newColumns) {
+    newColumns(newColumns) {
       if (newColumns.length && this.state.firstTimeSort) {
-        this.initialize_sort();
+        this.initializeSort();
         this.state.firstTimeSort = false;
       } else if (newColumns.length) {
         if (this.state.currentSortColumn.field) {
@@ -191,18 +194,18 @@ export default {
       }
     },
     /**
-     * Getting current page for @function change_page
+     * Getting current page for @function changePage
      * @param value
-     * @see change_page
+     * @see changePage
      */
-    current_page(value) {
+    currentPage(value) {
       this.state.newCurrentPage = value;
     },
     rows(newRows) {
       this.state.newRows = newRows || [];
     },
 
-    opened_detailed(expandedRows) {
+    openedDetailed(expandedRows) {
       this.state.visibleDetailRows = expandedRows;
     },
 
@@ -228,14 +231,14 @@ export default {
      */
 
     // SORTING FUNCTIONS
-    sort_by(data, key, func, ascendant) {
+    sortBy(data, key, func, ascendant) {
       let sorted = [];
       if (func && typeof func === 'function') {
         sorted = [...data].sort((a, b) => func(a, b, ascendant));
       } else {
         sorted = [...data].sort((a, b) => {
-          let saveA = this.get_value_by_path(a, key);
-          let saveB = this.get_value_by_path(b, key);
+          let saveA = this.getValueByPath(a, key);
+          let saveB = this.getValueByPath(b, key);
           if (!saveA && saveA !== 0) return 1;
           if (!saveB && saveB !== 0) return -1;
           if (saveA === saveB) return 0;
@@ -252,7 +255,7 @@ export default {
      * @param column
      * @param updatingData
      * @returns {object}
-     * @see sort_by
+     * @see sortBy
      */
 
     sort(column, updatingData = false) {
@@ -265,7 +268,7 @@ export default {
       if (this.backendSorting) {
         this.$emit('sort', column.field, this.state.ascendant ? 'asc' : 'desc');
       } else {
-        this.state.newRows = this.sort_by(
+        this.state.newRows = this.sortBy(
           this.state.newRows,
           column.field,
           column.defaultSort,
@@ -280,7 +283,7 @@ export default {
      * @property defaultSort
      */
 
-    initialize_sort() {
+    initializeSort() {
       if (!this.defaultSort) {
         return;
       }
@@ -309,8 +312,8 @@ export default {
      * @event page-change
      * @event update:currentPage
      */
-    change_page(page) {
-      this.state.newCurrentPage = page.current_page > 0 ? page.current_page : 1;
+    changePage(page) {
+      this.state.newCurrentPage = page.currentPage > 0 ? page.currentPage : 1;
       this.$emit('page-change', this.state.newCurrentPage);
       this.$emit('update:currentPage', this.state.newCurrentPage);
     },
@@ -321,11 +324,11 @@ export default {
      * @param row
      * @returns {boolean}
      */
-    is_row_checked(row) {
+    isRowChecked(row) {
       return this.state.newCheckedRows.indexOf(row, this.customIsChecked) >= 0;
     },
 
-    remove_checked_row(row) {
+    removeCheckedRow(row) {
       const index = this.state.newCheckedRows.indexOf(row, this.customIsChecked);
       if (index >= 0) {
         this.state.newCheckedRows.splice(index, 1);
@@ -338,11 +341,11 @@ export default {
      * @event check
      * @event update:checkedRows
      */
-    check_row(row) {
-      if (!this.is_row_checked(row)) {
+    checkRow(row) {
+      if (!this.isRowChecked(row)) {
         this.state.newCheckedRows.push(row);
       } else {
-        this.remove_checked_row(row);
+        this.removeCheckedRow(row);
       }
       this.$emit('check', this.state.newCheckedRows, row);
       this.$emit('update:checkedRows', this.state.newCheckedRows);
@@ -355,11 +358,11 @@ export default {
      * @event update:checkedRows
      */
 
-    check_all() {
-      const is_all_checked = this.is_all_checked;
-      this.search_data.forEach((currentRow) => {
-        this.remove_checked_row(currentRow);
-        if (!is_all_checked) {
+    checkAll() {
+      const isAllChecked = this.isAllChecked;
+      this.searchData.forEach((currentRow) => {
+        this.removeCheckedRow(currentRow);
+        if (!isAllChecked) {
           if (this.isRowCheckable(currentRow)) {
             this.state.newCheckedRows.push(currentRow);
           }
@@ -369,7 +372,7 @@ export default {
       this.$emit('check-all', this.state.newCheckedRows);
       this.$emit('update:checkedRows', this.state.newCheckedRows);
     },
-    get_value_by_path(obj, path) {
+    getValueByPath(obj, path) {
       const value = path.split('.').reduce((o, i) => o[i], obj);
       return value;
     },
@@ -380,32 +383,33 @@ export default {
      * @param column
      * @event check-column
      */
-    check_column(column) {
-      column.visible = !column.visible;
+    checkColumn(column) {
+      column.visible = !column.visible; // eslint-disable-line no-param-reassign
       this.state.visibilities[column.field] = column.visible;
       this.$emit('check-column', column.visible, column.field);
     },
 
     /**
-     * Functions called when datatable is diplayed on a mobile device and user browses different rows
+     * Functions called when datatable is displayed on a mobile device
+     * and user browses different rows
      */
     // MOBILE
     /**
      * Function to display next row
      */
-    next_card() {
-      this.state.currentCard++;
-      if (this.state.currentCard >= this.search_data.length) {
+    nextCard() {
+      this.state.currentCard += 1;
+      if (this.state.currentCard >= this.searchData.length) {
         this.state.currentCard = 0;
       }
     },
     /**
      * Function to display previous row
      */
-    previous_card() {
-      this.state.currentCard--;
+    previousCard() {
+      this.state.currentCard -= 1;
       if (this.state.currentCard < 0) {
-        this.state.currentCard = this.search_data.length - 1;
+        this.state.currentCard = this.searchData.length - 1;
       }
     },
 
@@ -414,21 +418,21 @@ export default {
     /**
      * Function that show and hides details
      * @param obj
-     * @function open_detail_row
-     * @function close_detail_row
+     * @function openDetailRow
+     * @function closeDetailRow
      * @event details-open
      * @event details-close
      * @event update:openedDetailed
      */
 
-    toggle_details(obj) {
-      const item = this.is_visible_detail_row(obj);
+    toggleDetails(obj) {
+      const item = this.isVisibleDetailRow(obj);
 
       if (item) {
-        this.close_detail_row(obj);
+        this.closeDetailRow(obj);
         this.$emit('details-close', obj);
       } else {
-        this.open_detail_row(obj);
+        this.openDetailRow(obj);
         this.$emit('details-open', obj);
       }
       this.$emit('update:openedDetailed', this.state.visibleDetailRows);
@@ -438,16 +442,16 @@ export default {
      * Function to show details
      * @param obj
      */
-    open_detail_row(obj) {
-      const index = this.handle_detail_key(obj);
+    openDetailRow(obj) {
+      const index = this.handleDetailKey(obj);
       this.state.visibleDetailRows.push(index);
     },
     /**
      * Function to hide details
      * @param obj
      */
-    close_detail_row(obj) {
-      const index = this.handle_detail_key(obj);
+    closeDetailRow(obj) {
+      const index = this.handleDetailKey(obj);
       const i = this.state.visibleDetailRows.indexOf(index);
       this.state.visibleDetailRows.splice(i, 1);
     },
@@ -456,13 +460,13 @@ export default {
      * @param obj
      * @returns {boolean}
      */
-    is_visible_detail_row(obj) {
-      const index = this.handle_detail_key(obj);
+    isVisibleDetailRow(obj) {
+      const index = this.handleDetailKey(obj);
       const result = this.state.visibleDetailRows.indexOf(index) >= 0;
       return result;
     },
 
-    handle_detail_key(idx) {
+    handleDetailKey(idx) {
       const key = this.detailKey;
       return !key.length ? idx : idx[key];
     },
