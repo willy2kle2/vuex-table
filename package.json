@@ -19,6 +19,7 @@
     "deploy-doc": "npm run doc && ./node_modules/.bin/gh-pages -d doc"
   },
   "dependencies": {
+    "bootstrap": "^4.1.3",
     "bootstrap-vue": "^2.0.0-rc.11",
     "css-loader": "^0.28.11",
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",

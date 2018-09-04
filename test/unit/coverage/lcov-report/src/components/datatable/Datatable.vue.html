@@ -783,7 +783,7 @@ export default {
 &nbsp;
   },
   computed: {
-<span class="fstat-no" title="function not covered" >    paginate_data() {</span>
+<span class="fstat-no" title="function not covered" >    paginateData() {</span>
 <span class="cstat-no" title="statement not covered" >      if (!this.paginated) {</span>
 <span class="cstat-no" title="statement not covered" >        return this.state.newRows;</span>
       }
@@ -796,8 +796,8 @@ export default {
 <span class="cstat-no" title="statement not covered" >      const end = parseInt(start, 10) + parseInt(itemsPerPage, 10);</span>
 <span class="cstat-no" title="statement not covered" >      return this.state.newRows.slice(start, end);</span>
     },
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    is_all_checked() {</span></span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      const validVisibleData = this.search_data.filter(</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    isAllChecked() {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      const validVisibleData = this.searchData.filter(</span></span>
 <span class="cstat-no" title="statement not covered" >        row =&gt; this.isRowCheckable(row));</span>
 <span class="cstat-no" title="statement not covered" >      if (validVisibleData.length === 0) {</span>
 <span class="cstat-no" title="statement not covered" >        return false;</span>
@@ -806,32 +806,32 @@ export default {
 <span class="cstat-no" title="statement not covered" >      return !isAllChecked;</span>
     },
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    is_all_uncheckable() {</span></span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      const validVisibleData = this.paginate_data.filter(row =&gt; this.isRowCheckable(row));</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    isAllUncheckable() {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      const validVisibleData = this.paginateData.filter(row =&gt; this.isRowCheckable(row));</span></span>
 <span class="cstat-no" title="statement not covered" >      return validVisibleData.length === 0;</span>
     },
 &nbsp;
-<span class="fstat-no" title="function not covered" >    search_data() {</span>
+<span class="fstat-no" title="function not covered" >    searchData() {</span>
 <span class="cstat-no" title="statement not covered" >      if (this.state.search !== '') {</span>
 <span class="cstat-no" title="statement not covered" >        const matcher = new RegExp(this.state.search, 'gmi');</span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >        return this.state.newRows.filter(row =&gt; (_.map(row, value =&gt; matcher.test(`${value}`))).some(val =&gt; val));</span></span>
       }
       else {
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        return this.paginate_data;</span>
+<span class="cstat-no" title="statement not covered" >        return this.paginateData;</span>
       }
     },
-<span class="fstat-no" title="function not covered" >    has_sortable_new_columns() {</span>
+<span class="fstat-no" title="function not covered" >    hasSortableNewColumns() {</span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      return this.newColumns.some(column =&gt; column.sortable);</span></span>
     },
 &nbsp;
-<span class="fstat-no" title="function not covered" >    is_mobile() {</span>
+<span class="fstat-no" title="function not covered" >    isMobile() {</span>
 <span class="cstat-no" title="statement not covered" >      window.innerWidth &lt; 768 ? this.state.mobile = true : this.state.mobile = false;</span>
 <span class="cstat-no" title="statement not covered" >      return this.state.mobile;</span>
     },
   },
   watch: {
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    set_data(value) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    setData(value) {</span></span>
 <span class="cstat-no" title="statement not covered" >      const saveNewColumns = this.state.newColumns;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      this.state.newColumns = [];</span>
@@ -850,9 +850,9 @@ export default {
 <span class="fstat-no" title="function not covered" >    columns(value) {</span>
 <span class="cstat-no" title="statement not covered" >      this.state.newColumns = [...value];</span>
     },
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    new_columns(newColumns) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    newColumns(newColumns) {</span></span>
 <span class="cstat-no" title="statement not covered" >      if (newColumns.length &amp;&amp; this.state.firstTimeSort) {</span>
-<span class="cstat-no" title="statement not covered" >        this.initialize_sort();</span>
+<span class="cstat-no" title="statement not covered" >        this.initializeSort();</span>
 <span class="cstat-no" title="statement not covered" >        this.state.firstTimeSort = false;</span>
 <span class="cstat-no" title="statement not covered" >      } else if (newColumns.length) {</span>
 <span class="cstat-no" title="statement not covered" >        if (this.state.currentSortColumn.field) {</span>
@@ -861,14 +861,14 @@ export default {
         }
       }
     },
-<span class="fstat-no" title="function not covered" >    current_page(value) {</span>
+<span class="fstat-no" title="function not covered" >    currentPage(value) {</span>
 <span class="cstat-no" title="statement not covered" >      this.state.newCurrentPage = value;</span>
     },
 <span class="fstat-no" title="function not covered" >    rows(newRows) {</span>
 <span class="cstat-no" title="statement not covered" >      this.state.newRows = newRows || [];</span>
     },
 &nbsp;
-<span class="fstat-no" title="function not covered" >    opened_detailed(expandedRows) {</span>
+<span class="fstat-no" title="function not covered" >    openedDetailed(expandedRows) {</span>
 <span class="cstat-no" title="statement not covered" >      this.state.visibleDetailRows = expandedRows;</span>
     },
 &nbsp;
@@ -885,14 +885,14 @@ export default {
   methods: {
 &nbsp;
     // SORTING FUNCTIONS
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    sort_by(data, key, func, ascendant) {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    sortBy(data, key, func, ascendant) {</span></span>
 <span class="cstat-no" title="statement not covered" >      let sorted = [];</span>
 <span class="cstat-no" title="statement not covered" >      if (func &amp;&amp; typeof func === 'function') {</span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >        sorted = [...data].sort((a, b) =&gt; func(a, b, ascendant));</span></span>
       } else {
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >        sorted = [...data].sort((a, b) =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >          let saveA = this.get_value_by_path(a, key);</span>
-<span class="cstat-no" title="statement not covered" >          let saveB = this.get_value_by_path(b, key);</span>
+<span class="cstat-no" title="statement not covered" >          let saveA = this.getValueByPath(a, key);</span>
+<span class="cstat-no" title="statement not covered" >          let saveB = this.getValueByPath(b, key);</span>
 <span class="cstat-no" title="statement not covered" >          if (!saveA &amp;&amp; saveA !== 0) return 1;</span>
 <span class="cstat-no" title="statement not covered" >          if (!saveB &amp;&amp; saveB !== 0) return -1;</span>
 <span class="cstat-no" title="statement not covered" >          if (saveA === saveB) return 0;</span>
@@ -915,7 +915,7 @@ export default {
 <span class="cstat-no" title="statement not covered" >        this.$emit('sort', column.field, this.state.ascendant ? 'asc' : 'desc');</span>
       }
       else {
-<span class="cstat-no" title="statement not covered" >        this.state.newRows = this.sort_by(</span>
+<span class="cstat-no" title="statement not covered" >        this.state.newRows = this.sortBy(</span>
           this.state.newRows,
           column.field,
           column.customSort,
@@ -926,7 +926,7 @@ export default {
     },
 &nbsp;
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    initialize_sort() {</span></span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    initializeSort() {</span></span>
 <span class="cstat-no" title="statement not covered" >      if (!this.defaultSort) {</span>
 <span class="cstat-no" title="statement not covered" >        return;</span>
       }
@@ -949,39 +949,39 @@ export default {
     },
 &nbsp;
     // PAGINATION FUNCTION
-<span class="fstat-no" title="function not covered" >    change_page(page) {</span>
-<span class="cstat-no" title="statement not covered" >      this.state.newCurrentPage = page.current_page &gt; 0 ? page.current_page : 1;</span>
+<span class="fstat-no" title="function not covered" >    changePage(page) {</span>
+<span class="cstat-no" title="statement not covered" >      this.state.newCurrentPage = page.currentPage &gt; 0 ? page.currentPage : 1;</span>
 <span class="cstat-no" title="statement not covered" >      this.$emit('page-change', this.state.newCurrentPage);</span>
 <span class="cstat-no" title="statement not covered" >      this.$emit('update:currentPage', this.state.newCurrentPage);</span>
     },
 &nbsp;
     // SELECT ROW
 &nbsp;
-<span class="fstat-no" title="function not covered" >    is_row_checked(row) {</span>
+<span class="fstat-no" title="function not covered" >    isRowChecked(row) {</span>
 <span class="cstat-no" title="statement not covered" >      return this.state.newCheckedRows.indexOf(row, this.customIsChecked) &gt;= 0;</span>
     },
 &nbsp;
-<span class="fstat-no" title="function not covered" >    remove_checked_row(row) {</span>
+<span class="fstat-no" title="function not covered" >    removeCheckedRow(row) {</span>
 <span class="cstat-no" title="statement not covered" >      const index = this.state.newCheckedRows.indexOf(row, this.customIsChecked);</span>
 <span class="cstat-no" title="statement not covered" >      if (index &gt;= 0) {</span>
 <span class="cstat-no" title="statement not covered" >        this.state.newCheckedRows.splice(index, 1);</span>
       }
     },
-<span class="fstat-no" title="function not covered" >    check_row(row) {</span>
-<span class="cstat-no" title="statement not covered" >      if (!this.is_row_checked(row)) {</span>
+<span class="fstat-no" title="function not covered" >    checkRow(row) {</span>
+<span class="cstat-no" title="statement not covered" >      if (!this.isRowChecked(row)) {</span>
 <span class="cstat-no" title="statement not covered" >        this.state.newCheckedRows.push(row);</span>
       } else {
-<span class="cstat-no" title="statement not covered" >        this.remove_checked_row(row);</span>
+<span class="cstat-no" title="statement not covered" >        this.removeCheckedRow(row);</span>
       }
 <span class="cstat-no" title="statement not covered" >      this.$emit('check', this.state.newCheckedRows, row);</span>
 <span class="cstat-no" title="statement not covered" >      this.$emit('update:checkedRows', this.state.newCheckedRows);</span>
     },
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    check_all() {</span></span>
-<span class="cstat-no" title="statement not covered" >      const is_all_checked = this.is_all_checked;</span>
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      this.search_data.forEach((currentRow) =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >        this.remove_checked_row(currentRow);</span>
-<span class="cstat-no" title="statement not covered" >        if (!is_all_checked) {</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    checkAll() {</span></span>
+<span class="cstat-no" title="statement not covered" >      const isAllChecked = this.isAllChecked;</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      this.searchData.forEach((currentRow) =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >        this.removeCheckedRow(currentRow);</span>
+<span class="cstat-no" title="statement not covered" >        if (!isAllChecked) {</span>
 <span class="cstat-no" title="statement not covered" >          if (this.isRowCheckable(currentRow)) {</span>
 <span class="cstat-no" title="statement not covered" >            this.state.newCheckedRows.push(currentRow);</span>
           }
@@ -991,64 +991,64 @@ export default {
 <span class="cstat-no" title="statement not covered" >      this.$emit('check-all', this.state.newCheckedRows);</span>
 <span class="cstat-no" title="statement not covered" >      this.$emit('update:checkedRows', this.state.newCheckedRows);</span>
     },
-<span class="fstat-no" title="function not covered" >    get_value_by_path(obj, path) {</span>
+<span class="fstat-no" title="function not covered" >    getValueByPath(obj, path) {</span>
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >      const value = path.split('.').reduce((o, i) =&gt; o[i], obj);</span></span>
 <span class="cstat-no" title="statement not covered" >      return value;</span>
     },
     // SELECT COLUMN
-<span class="fstat-no" title="function not covered" >    check_column(column) {</span>
+<span class="fstat-no" title="function not covered" >    checkColumn(column) {</span>
 <span class="cstat-no" title="statement not covered" >      column.visible = !column.visible;</span>
 <span class="cstat-no" title="statement not covered" >      this.state.visibilities[column.field] = column.visible;</span>
 <span class="cstat-no" title="statement not covered" >      this.$emit('check-column', column.visible, column.field);</span>
     },
 &nbsp;
     // MOBILE
-<span class="fstat-no" title="function not covered" >    next_card() {</span>
+<span class="fstat-no" title="function not covered" >    nextCard() {</span>
 <span class="cstat-no" title="statement not covered" >      this.state.currentCard++;</span>
-<span class="cstat-no" title="statement not covered" >      if (this.state.currentCard &gt;= this.search_data.length) {</span>
+<span class="cstat-no" title="statement not covered" >      if (this.state.currentCard &gt;= this.searchData.length) {</span>
 <span class="cstat-no" title="statement not covered" >        this.state.currentCard = 0;</span>
       }
     },
-<span class="fstat-no" title="function not covered" >    previous_card() {</span>
+<span class="fstat-no" title="function not covered" >    previousCard() {</span>
 <span class="cstat-no" title="statement not covered" >      this.state.currentCard--;</span>
 <span class="cstat-no" title="statement not covered" >      if (this.state.currentCard &lt; 0) {</span>
-<span class="cstat-no" title="statement not covered" >        this.state.currentCard = this.search_data.length - 1;</span>
+<span class="cstat-no" title="statement not covered" >        this.state.currentCard = this.searchData.length - 1;</span>
       }
     },
 &nbsp;
     // SHOW DETAILS
 &nbsp;
-<span class="fstat-no" title="function not covered" >    toggle_details(obj) {</span>
-<span class="cstat-no" title="statement not covered" >      const item = this.is_visible_detail_row(obj);</span>
+<span class="fstat-no" title="function not covered" >    toggleDetails(obj) {</span>
+<span class="cstat-no" title="statement not covered" >      const item = this.isVisibleDetailRow(obj);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      if (item) {</span>
-<span class="cstat-no" title="statement not covered" >        this.close_detail_row(obj);</span>
+<span class="cstat-no" title="statement not covered" >        this.closeDetailRow(obj);</span>
 <span class="cstat-no" title="statement not covered" >        this.$emit('details-close', obj);</span>
       } else {
-<span class="cstat-no" title="statement not covered" >        this.open_detail_row(obj);</span>
+<span class="cstat-no" title="statement not covered" >        this.openDetailRow(obj);</span>
 <span class="cstat-no" title="statement not covered" >        this.$emit('details-open', obj);</span>
       }
 <span class="cstat-no" title="statement not covered" >      this.$emit('update:openedDetailed', this.state.visibleDetailRows);</span>
     },
 &nbsp;
-<span class="fstat-no" title="function not covered" >    open_detail_row(obj) {</span>
-<span class="cstat-no" title="statement not covered" >      const index = this.handle_detail_key(obj);</span>
+<span class="fstat-no" title="function not covered" >    openDetailRow(obj) {</span>
+<span class="cstat-no" title="statement not covered" >      const index = this.handleDetailKey(obj);</span>
 <span class="cstat-no" title="statement not covered" >      this.state.visibleDetailRows.push(index);</span>
     },
 &nbsp;
-<span class="fstat-no" title="function not covered" >    close_detail_row(obj) {</span>
-<span class="cstat-no" title="statement not covered" >      const index = this.handle_detail_key(obj);</span>
+<span class="fstat-no" title="function not covered" >    closeDetailRow(obj) {</span>
+<span class="cstat-no" title="statement not covered" >      const index = this.handleDetailKey(obj);</span>
 <span class="cstat-no" title="statement not covered" >      const i = this.state.visibleDetailRows.indexOf(index);</span>
 <span class="cstat-no" title="statement not covered" >      this.state.visibleDetailRows.splice(i, 1);</span>
     },
 &nbsp;
-<span class="fstat-no" title="function not covered" >    is_visible_detail_row(obj) {</span>
-<span class="cstat-no" title="statement not covered" >      const index = this.handle_detail_key(obj);</span>
+<span class="fstat-no" title="function not covered" >    isVisibleDetailRow(obj) {</span>
+<span class="cstat-no" title="statement not covered" >      const index = this.handleDetailKey(obj);</span>
 <span class="cstat-no" title="statement not covered" >      const result = this.state.visibleDetailRows.indexOf(index) &gt;= 0;</span>
 <span class="cstat-no" title="statement not covered" >      return result;</span>
     },
 &nbsp;
-<span class="fstat-no" title="function not covered" >    handle_detail_key(idx) {</span>
+<span class="fstat-no" title="function not covered" >    handleDetailKey(idx) {</span>
 <span class="cstat-no" title="statement not covered" >      const key = this.detailKey;</span>
 <span class="cstat-no" title="statement not covered" >      return !key.length ? idx : idx[key];</span>
     },
