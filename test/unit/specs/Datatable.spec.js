@@ -83,7 +83,7 @@ describe('Datatable.vue', () => {
     checkStub.restore();
   });
 
-  it('has page-change method working correctly',() => {
+  it('has page-change method working correctly', () => {
     const props = {
       rows: [
         { id: 1, first_name: 'Jesse', last_name: 'Simmons', date: '2016-10-15 13:43:27', gender: 'Male' },
@@ -100,7 +100,7 @@ describe('Datatable.vue', () => {
       itemsPerPage: 1,
       currentPage: 1,
     };
-    const component = mount(Datatable, {propsData: props});
+    const component = mount(Datatable, { propsData: props });
     const pageStub = sinon.stub(component.vm, 'changePage').returns(props);
     const result = component.vm.changePage(2);
 
