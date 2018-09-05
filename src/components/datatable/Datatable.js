@@ -10,7 +10,7 @@
  * @see [changePage]{@link Datatable#changePage}
  * @see [checkRow]{@link Datatable#checkRow}
  * @see [checkAll]{@link Datatable#checkAll}
- * @see [checkColumn]{@link Datatable#checkColumn}
+ * @see [toggleColumn]{@link Datatable#toggleColumn}
  * @see [check_details]{@link Datatable#toggleDetails}
  */
 import _ from 'lodash';
@@ -33,6 +33,7 @@ export default {
         firstTimeSort: true,
         ascendant: true,
         newCheckedRows: [...this.checkedRows],
+        newCheckedColumns: [...this.checkedColumns],
         _isTable: true,
         search: '',
         currentCard: 0,
@@ -67,13 +68,15 @@ export default {
     selectedRows: { type: Object },
     isRowCheckable: { type: Function, default: () => true },
     checkedRows: { type: Array, default: () => [] },
+    checkedColumns: { type: Array, default: () => [] },
     customIsChecked: Function,
     showDetails: { type: Boolean, default: false },
     detailsOpened: { type: Array, default: () => [] },
     detailKey: { type: String, default: '' },
     detailsVisible: { type: Function, default: () => true },
-    isColumnCheckable: { type: Boolean, default: true },
+    isColumnHidable: { type: Boolean, default: true },
     loading: { type: Boolean },
+    isColumnCheckable: { type: Boolean, default: false },
 
 
   },
@@ -358,6 +361,39 @@ export default {
      * @event update:checkedRows
      */
 
+    // SELECT COLUMN
+    /**
+     * Function to verify whether a column is checked or not
+     * @param column
+     * @returns {boolean}
+     */
+    isColumnChecked(column) {
+      return this.state.newCheckedColumns.indexOf(column, this.customIsChecked) >= 0;
+    },
+
+    removeCheckedColumn(column) {
+      const index = this.state.newCheckedColumns.indexOf(column, this.customIsChecked);
+      if (index >= 0) {
+        this.state.newCheckedColumns.splice(index, 1);
+      }
+    },
+    /**
+     * Function to check column
+     * @param column
+     * @event check
+     * @event update:checkedColumns
+     */
+    checkColumn(column) {
+      if (!this.isColumnChecked(column)) {
+        this.state.newCheckedColumns.push(column);
+      } else {
+        this.removeCheckedColumn(column);
+      }
+      this.$emit('check', this.state.newCheckedColumns, column);
+      this.$emit('update:checkedColumns', this.state.newCheckedColumns);
+    },
+
+
     checkAll() {
       const isAllChecked = this.isAllChecked;
       this.searchData.forEach((currentRow) => {
@@ -383,10 +419,10 @@ export default {
      * @param column
      * @event check-column
      */
-    checkColumn(column) {
+    toggleColumn(column) {
       column.visible = !column.visible; // eslint-disable-line no-param-reassign
       this.state.visibilities[column.field] = column.visible;
-      this.$emit('check-column', column.visible, column.field);
+      this.$emit('toggle-column', column.visible, column.field);
     },
 
     /**

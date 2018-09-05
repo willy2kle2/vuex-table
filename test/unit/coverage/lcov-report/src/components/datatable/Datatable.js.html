@@ -777,7 +777,7 @@ export default <span class="fstat-no" title="function not covered" >{</span>
     detailsOpened: {type: Array, default: <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; </span>[]},</span>
     detailKey: {type: String, default: ''},
     detailsVisible: {type: Function, default: <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =&gt; </span>true},</span>
-    isColumnCheckable: {type: Boolean, default: true},
+    isColumnHidable: {type: Boolean, default: true},
     loading: {type: Boolean},
 &nbsp;
 &nbsp;
@@ -996,7 +996,7 @@ export default <span class="fstat-no" title="function not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >      return value;</span>
     },
     // SELECT COLUMN
-    checkColumn(column) {
+    toggleColumn(column) {
 <span class="cstat-no" title="statement not covered" >      column.visible = !column.visible;</span>
 <span class="cstat-no" title="statement not covered" >      this.state.visibilities[column.field] = column.visible;</span>
 <span class="cstat-no" title="statement not covered" >      this.$emit('check-column', column.visible, column.field);</span>

@@ -48,7 +48,7 @@
  * @see [changePage]{@link Datatable#changePage}
  * @see [checkRow]{@link Datatable#checkRow}
  * @see [checkAll]{@link Datatable#checkAll}
- * @see [checkColumn]{@link Datatable#checkColumn}
+ * @see [toggleColumn]{@link Datatable#toggleColumn}
  * @see [check_details]{@link Datatable#toggleDetails}
  */
 
@@ -110,7 +110,7 @@ export default {
     detailsOpened: { type: Array, default: () =&gt; [] },
     detailKey: { type: String, default: &apos;&apos; },
     detailsVisible: { type: Function, default: () =&gt; true },
-    isColumnCheckable: { type: Boolean, default: true },
+    isColumnHidable: { type: Boolean, default: true },
     loading: { type: Boolean },
 
 
@@ -419,7 +419,7 @@ export default {
      * @param column
      * @event check-column
      */
-    checkColumn(column) {
+    toggleColumn(column) {
       column.visible = !column.visible;
       this.state.visibilities[column.field] = column.visible;
       this.$emit(&apos;check-column&apos;, column.visible, column.field);

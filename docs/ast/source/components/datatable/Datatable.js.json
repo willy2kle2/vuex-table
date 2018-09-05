@@ -102,7 +102,7 @@
         "leadingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * @name Datatable\n * @author Federica Alfano <federica.alfano@superpitch.fr>\n * @author Corentin Ribeyre <corentin.ribeyre@superpitch.fr>\n * @fileOverview This file contains all methods, props, computed properties and watchers that are necessary for datatable to work correctly.\n * Basic functions:\n * @see [paginateData]{@link Datatable#paginateData}\n * @see [searchData]{@link Datatable#searchData}\n * @see [changePage]{@link Datatable#changePage}\n * @see [checkRow]{@link Datatable#checkRow}\n * @see [checkAll]{@link Datatable#checkAll}\n * @see [checkColumn]{@link Datatable#checkColumn}\n * @see [check_details]{@link Datatable#toggleDetails}\n ",
+            "value": "*\n * @name Datatable\n * @author Federica Alfano <federica.alfano@superpitch.fr>\n * @author Corentin Ribeyre <corentin.ribeyre@superpitch.fr>\n * @fileOverview This file contains all methods, props, computed properties and watchers that are necessary for datatable to work correctly.\n * Basic functions:\n * @see [paginateData]{@link Datatable#paginateData}\n * @see [searchData]{@link Datatable#searchData}\n * @see [changePage]{@link Datatable#changePage}\n * @see [checkRow]{@link Datatable#checkRow}\n * @see [checkAll]{@link Datatable#checkAll}\n * @see [toggleColumn]{@link Datatable#toggleColumn}\n * @see [check_details]{@link Datatable#toggleDetails}\n ",
             "start": 0,
             "end": 667,
             "loc": {
@@ -5853,9 +5853,9 @@
                           "line": 74,
                           "column": 21
                         },
-                        "identifierName": "isColumnCheckable"
+                        "identifierName": "isColumnHidable"
                       },
-                      "name": "isColumnCheckable"
+                      "name": "isColumnHidable"
                     },
                     "value": {
                       "type": "ObjectExpression",
@@ -24747,9 +24747,9 @@
                           "line": 383,
                           "column": 16
                         },
-                        "identifierName": "checkColumn"
+                        "identifierName": "toggleColumn"
                       },
-                      "name": "checkColumn",
+                      "name": "toggleColumn",
                       "leadingComments": null
                     },
                     "kind": "method",
@@ -29317,7 +29317,7 @@
   "comments": [
     {
       "type": "CommentBlock",
-      "value": "*\n * @name Datatable\n * @author Federica Alfano <federica.alfano@superpitch.fr>\n * @author Corentin Ribeyre <corentin.ribeyre@superpitch.fr>\n * @fileOverview This file contains all methods, props, computed properties and watchers that are necessary for datatable to work correctly.\n * Basic functions:\n * @see [paginateData]{@link Datatable#paginateData}\n * @see [searchData]{@link Datatable#searchData}\n * @see [changePage]{@link Datatable#changePage}\n * @see [checkRow]{@link Datatable#checkRow}\n * @see [checkAll]{@link Datatable#checkAll}\n * @see [checkColumn]{@link Datatable#checkColumn}\n * @see [check_details]{@link Datatable#toggleDetails}\n ",
+      "value": "*\n * @name Datatable\n * @author Federica Alfano <federica.alfano@superpitch.fr>\n * @author Corentin Ribeyre <corentin.ribeyre@superpitch.fr>\n * @fileOverview This file contains all methods, props, computed properties and watchers that are necessary for datatable to work correctly.\n * Basic functions:\n * @see [paginateData]{@link Datatable#paginateData}\n * @see [searchData]{@link Datatable#searchData}\n * @see [changePage]{@link Datatable#changePage}\n * @see [checkRow]{@link Datatable#checkRow}\n * @see [checkAll]{@link Datatable#checkAll}\n * @see [toggleColumn]{@link Datatable#toggleColumn}\n * @see [check_details]{@link Datatable#toggleDetails}\n ",
       "start": 0,
       "end": 667,
       "loc": {
@@ -29799,7 +29799,7 @@
   "tokens": [
     {
       "type": "CommentBlock",
-      "value": "*\n * @name Datatable\n * @author Federica Alfano <federica.alfano@superpitch.fr>\n * @author Corentin Ribeyre <corentin.ribeyre@superpitch.fr>\n * @fileOverview This file contains all methods, props, computed properties and watchers that are necessary for datatable to work correctly.\n * Basic functions:\n * @see [paginateData]{@link Datatable#paginateData}\n * @see [searchData]{@link Datatable#searchData}\n * @see [changePage]{@link Datatable#changePage}\n * @see [checkRow]{@link Datatable#checkRow}\n * @see [checkAll]{@link Datatable#checkAll}\n * @see [checkColumn]{@link Datatable#checkColumn}\n * @see [check_details]{@link Datatable#toggleDetails}\n ",
+      "value": "*\n * @name Datatable\n * @author Federica Alfano <federica.alfano@superpitch.fr>\n * @author Corentin Ribeyre <corentin.ribeyre@superpitch.fr>\n * @fileOverview This file contains all methods, props, computed properties and watchers that are necessary for datatable to work correctly.\n * Basic functions:\n * @see [paginateData]{@link Datatable#paginateData}\n * @see [searchData]{@link Datatable#searchData}\n * @see [changePage]{@link Datatable#changePage}\n * @see [checkRow]{@link Datatable#checkRow}\n * @see [checkAll]{@link Datatable#checkAll}\n * @see [toggleColumn]{@link Datatable#toggleColumn}\n * @see [check_details]{@link Datatable#toggleDetails}\n ",
       "start": 0,
       "end": 667,
       "loc": {
@@ -41861,7 +41861,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "isColumnCheckable",
+      "value": "isColumnHidable",
       "start": 2745,
       "end": 2762,
       "loc": {
@@ -79727,7 +79727,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "checkColumn",
+      "value": "toggleColumn",
       "start": 11607,
       "end": 11619,
       "loc": {

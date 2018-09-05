@@ -16,6 +16,10 @@ yarn add vuex-table
 ```
 
 
+To install dependencies
+```
+npm install
+```
 ### Import
 
 ```
