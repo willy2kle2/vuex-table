@@ -21,11 +21,11 @@
       return {
         state: {
           columns: [
-            { label: 'ID', field: 'id', visible: true, isColumnCheckable: true },
-            { label: 'First Name', field: 'first_name', visible: true, isColumnCheckable: true },
-            { label: 'Last Name', field: 'last_name', visible: true, isColumnCheckable: true },
-            { label: 'Date', field: 'date', visible: true, isColumnCheckable: true },
-            { label: 'Gender', field: 'gender', visible: true, isColumnCheckable: true },
+            { label: 'ID', field: 'id', visible: true },
+            { label: 'First Name', field: 'first_name', visible: true },
+            { label: 'Last Name', field: 'last_name', visible: true },
+            { label: 'Date', field: 'date', visible: true },
+            { label: 'Gender', field: 'gender', visible: true },
           ],
           rows: [
             { id: '1', first_name: 'Jesse', last_name: 'Simmons', date: '2016-10-15 13:43:27', gender: 'Male' },
