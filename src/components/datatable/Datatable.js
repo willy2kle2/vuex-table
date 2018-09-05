@@ -347,11 +347,12 @@ export default {
     checkRow(row) {
       if (!this.isRowChecked(row)) {
         this.state.newCheckedRows.push(row);
+        this.$emit('check-row', this.state.newCheckedRows, row);
+        this.$emit('update:checkedRows', this.state.newCheckedRows);
       } else {
         this.removeCheckedRow(row);
+        this.$emit('uncheck-row', this.state.newCheckedRows, row);
       }
-      this.$emit('check', this.state.newCheckedRows, row);
-      this.$emit('update:checkedRows', this.state.newCheckedRows);
     },
 
     /**
@@ -386,11 +387,12 @@ export default {
     checkColumn(column) {
       if (!this.isColumnChecked(column)) {
         this.state.newCheckedColumns.push(column);
+        this.$emit('check-column', this.state.newCheckedColumns, column);
+        this.$emit('update:checkedColumns', this.state.newCheckedColumns);
       } else {
         this.removeCheckedColumn(column);
+        this.$emit('uncheck-column', this.state.newCheckedColumns, column);
       }
-      this.$emit('check', this.state.newCheckedColumns, column);
-      this.$emit('update:checkedColumns', this.state.newCheckedColumns);
     },
 
 
