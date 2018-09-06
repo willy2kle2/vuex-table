@@ -355,13 +355,6 @@ export default {
       }
     },
 
-    /**
-     * Function for checking all rows at once
-     * @event check
-     * @event check-all
-     * @event update:checkedRows
-     */
-
     // SELECT COLUMN
     /**
      * Function to verify whether a column is checked or not
@@ -394,6 +387,13 @@ export default {
         this.$emit('uncheck-column', this.state.newCheckedColumns, column);
       }
     },
+
+    /**
+     * Function for checking all rows at once
+     * @event check
+     * @event check-all
+     * @event update:checkedRows
+     */
 
 
     checkAll() {
