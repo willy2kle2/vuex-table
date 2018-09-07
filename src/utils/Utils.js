@@ -1,6 +1,16 @@
+/** @module Utils */
+
 const _ = require('lodash');
 
 export default {
+  /**
+    * Utility function returning an object
+    *
+    * @param {?Object} object:  object to return (may be null or undefined)
+    * @param {Boolean} copy: If true, create a deep copy of the object.
+    * @private
+    * @return {?Object} (copied) object
+    */
   returnInnerObject(object, copy) {
     if (object == null) {
       return null;

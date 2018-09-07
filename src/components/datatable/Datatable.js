@@ -1,24 +1,11 @@
-/**
- * @name Datatable
- * @author Federica Alfano <federica.alfano@superpitch.fr>
- * @author Corentin Ribeyre <corentin.ribeyre@superpitch.fr>
- * @fileOverview This file contains all methods, props,
- * computed properties and watchers that are necessary for datatable to work correctly.
- * Basic functions:
- * @see [paginateData]{@link Datatable#paginateData}
- * @see [searchData]{@link Datatable#searchData}
- * @see [changePage]{@link Datatable#changePage}
- * @see [checkRow]{@link Datatable#checkRow}
- * @see [checkAll]{@link Datatable#checkAll}
- * @see [toggleColumn]{@link Datatable#toggleColumn}
- * @see [check_details]{@link Datatable#toggleDetails}
- */
+
 import _ from 'lodash';
 import OAMixin from '../../mixins/ObjectAccessMixin';
 import Column from '../column/Column.vue';
 import Paginator from '../paginator/Paginator.vue';
 
-export default {
+/** @namespace */
+const Datatable = {
   name: 'datatable',
   components: { Column, Paginator },
   mixins: [OAMixin],
@@ -48,7 +35,14 @@ export default {
 
     };
   },
+  /** @namespace */
   props: {
+    /**
+     * Rows of the datatable
+     *
+     * @memberof Datatable.props
+     * @type {Array|Object}
+     */
     rows: { type: [Array, Object], default: () => [] },
     columns: { type: Array, default: () => [] },
     paginated: { type: Boolean, default: true },
@@ -77,12 +71,12 @@ export default {
     isColumnHidable: { type: Boolean, default: true },
     loading: { type: Boolean },
     isColumnCheckable: { type: Boolean, default: false },
-
-
   },
+  /** @namespace */
   computed: {
     /**
      *  Function for pagination.
+     *  @memberof Datatable.computed
      *  @property itemsPerPage, number of rows displayed in every page.
      *  @param  Start point, provided by pagination offset
      *  @param End point, corresponding to itemsPerPage
@@ -104,6 +98,7 @@ export default {
 
     /**
      * Function filtering on all rows to see whether all rows are checked or not
+     * @memberof Datatable.computed
      * @returns {boolean}
      */
     isAllChecked() {
@@ -118,6 +113,7 @@ export default {
     },
     /**
      * Function filtering on all rows to detect rows that can be unchecked.
+     * @memberof Datatable.computed
      * @returns {boolean}
      */
     isAllUncheckable() {
@@ -127,6 +123,7 @@ export default {
 
     /**
      * Function filtering on rows displaying results that match with search input value.
+     * @memberof Datatable.computed
      * @default When search input is empty, all rows of paginate_date are displayed.
      * @returns {array}
      */
@@ -145,6 +142,7 @@ export default {
 
     /**
      * Function that checks whether user device is mobile or not
+     * @memberof Datatable.computed
      * @returns {boolean}
      */
 
@@ -154,9 +152,11 @@ export default {
       return this.state.mobile;
     },
   },
+  /** @namespace */
   watch: {
     /**
      * Watcher for setting columns and rows after user interaction
+     * @memberof Datatable.watch
      * @param value
      */
     setData(value) {
@@ -174,6 +174,7 @@ export default {
 
     /**
      * Function for getting number of total pages from backend
+     * @memberof Datatable.watch
      * @param newTotal
      * @see backendPagination
      *
@@ -198,6 +199,7 @@ export default {
     },
     /**
      * Getting current page for @function changePage
+     * @memberof Datatable.watch
      * @param value
      * @see changePage
      */
@@ -222,6 +224,7 @@ export default {
 
 
   },
+  /** @namespace */
   methods: {
 
     /**
@@ -230,9 +233,9 @@ export default {
      * @param key
      * @param func
      * @param ascendant
+     * @memberof Datatable.methods
      * @returns {Array}
      */
-
     // SORTING FUNCTIONS
     sortBy(data, key, func, ascendant) {
       let sorted = [];
@@ -255,12 +258,12 @@ export default {
 
     /**
      * Sorting function
+     * @memberof Datatable.methods
      * @param column
      * @param updatingData
      * @returns {object}
      * @see sortBy
      */
-
     sort(column, updatingData = false) {
       if (!this.isSortable) {
         return;
@@ -283,6 +286,7 @@ export default {
 
     /**
      * Function to initialize sort according to defaultSort property
+     * @memberof Datatable.methods
      * @property defaultSort
      */
 
@@ -311,6 +315,7 @@ export default {
     // PAGINATION FUNCTION
     /**
      * Function to change page
+     * @memberof Datatable.methods
      * @param page
      * @event page-change
      * @event update:currentPage
@@ -324,6 +329,7 @@ export default {
     // SELECT ROW
     /**
      * Function to verify whether a row is checked or not
+     * @memberof Datatable.methods
      * @param row
      * @returns {boolean}
      */
@@ -340,6 +346,7 @@ export default {
 
     /**
      * Function to check row
+     * @memberof Datatable.methods
      * @param row
      * @event check
      * @event update:checkedRows
@@ -358,6 +365,7 @@ export default {
     // SELECT COLUMN
     /**
      * Function to verify whether a column is checked or not
+     * @memberof Datatable.methods
      * @param column
      * @returns {boolean}
      */
@@ -373,6 +381,7 @@ export default {
     },
     /**
      * Function to check column
+     * @memberof Datatable.methods
      * @param column
      * @event check
      * @event update:checkedColumns
@@ -390,6 +399,7 @@ export default {
 
     /**
      * Function for checking all rows at once
+     * @memberof Datatable.methods
      * @event check
      * @event check-all
      * @event update:checkedRows
@@ -418,6 +428,7 @@ export default {
 
     /**
      * Function to check a column
+     * @memberof Datatable.methods
      * @param column
      * @event check-column
      */
@@ -427,13 +438,10 @@ export default {
       this.$emit('toggle-column', column.visible, column.field);
     },
 
-    /**
-     * Functions called when datatable is displayed on a mobile device
-     * and user browses different rows
-     */
     // MOBILE
     /**
      * Function to display next row
+     * @memberof Datatable.methods
      */
     nextCard() {
       this.state.currentCard += 1;
@@ -443,6 +451,7 @@ export default {
     },
     /**
      * Function to display previous row
+     * @memberof Datatable.methods
      */
     previousCard() {
       this.state.currentCard -= 1;
@@ -455,6 +464,7 @@ export default {
 
     /**
      * Function that show and hides details
+     * @memberof Datatable.methods
      * @param obj
      * @function openDetailRow
      * @function closeDetailRow
@@ -478,6 +488,7 @@ export default {
 
     /**
      * Function to show details
+     * @memberof Datatable.methods
      * @param obj
      */
     openDetailRow(obj) {
@@ -486,6 +497,7 @@ export default {
     },
     /**
      * Function to hide details
+     * @memberof Datatable.methods
      * @param obj
      */
     closeDetailRow(obj) {
@@ -495,6 +507,7 @@ export default {
     },
     /**
      * Function to check whether a row contains details to show or not
+     * @memberof Datatable.methods
      * @param obj
      * @returns {boolean}
      */
@@ -510,3 +523,5 @@ export default {
     },
   },
 };
+
+export default Datatable;
