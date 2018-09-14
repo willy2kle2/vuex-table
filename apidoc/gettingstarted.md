@@ -34,13 +34,13 @@ Vue.use(VuexTable);
 ```
 <template>
   <div id="app">
-    <datatable :rows="state.rows" 
+    <vuex-table :rows="state.rows" 
                :columns="state.columns"
                :itemsPerPage="state.itemsPerPage"
                :selected.sync="state.selected" :checked-rows.sync="state.checkedRows" checkable
           
     >
-    </datatable>
+    </vuex-table>
 
   </div>
 </template>
