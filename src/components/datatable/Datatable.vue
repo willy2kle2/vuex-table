@@ -3,11 +3,11 @@
     <div class="data-input"><input type="search" name="search" placeholder="Search" v-model="state.search"
                                    v-if="displaySearchbar"/><i class="fa fa-search" aria-hidden="true"
                                                                @click=""></i></div>
-    <div class="checkbox-container" v-if="isColumnCheckable && !isMobile">
+    <div class="checkbox-container" v-if="isColumnHidable && !isMobile">
       <div v-for="(column, index) in state.newColumns" :key="index">
         <label>{{column.label}}</label>
         <input type="checkbox" class="datatable-checkbox checkbox-all inline-block"
-               @change.sync="checkColumn(column)"
+               @change.sync="toggleColumn(column)"
                :value="column.field" checked>
       </div>
     </div>
@@ -26,6 +26,10 @@
                                 column.sortable && isSortable ? 'sortable' : ''
                             ]" v-if="column.visible">
           <div class="cell">
+            <input type="checkbox" class="datatable-checkbox inline-block column-checkbox"
+                   :value="isColumnChecked(column)"
+                   @change="checkColumn(column)" :checked="isAllChecked || isColumnChecked(column)" v-if="column.isColumnCheckable"/>
+
             <template>{{ column.label }}</template>
             <i aria-hidden="true"
                :class="[state.ascendant ? 'fa-chevron-down' : 'fa-chevron-up', 'fa data-icon']"

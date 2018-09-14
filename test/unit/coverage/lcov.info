@@ -99,7 +99,7 @@ FN:165,checkAll
 FN:262,(anonymous_45)
 FN:165,getValueByPath
 FN:275,(anonymous_47)
-FN:165,checkColumn
+FN:165,toggleColumn
 FN:165,nextCard
 FN:165,previousCard
 FN:165,toggleDetails
@@ -156,7 +156,7 @@ FNDA:0,checkAll
 FNDA:0,(anonymous_45)
 FNDA:0,getValueByPath
 FNDA:0,(anonymous_47)
-FNDA:0,checkColumn
+FNDA:0,toggleColumn
 FNDA:0,nextCard
 FNDA:0,previousCard
 FNDA:0,toggleDetails
@@ -457,7 +457,7 @@ FN:260,checkAll
 FN:262,(anonymous_46)
 FN:274,getValueByPath
 FN:275,(anonymous_48)
-FN:279,checkColumn
+FN:279,toggleColumn
 FN:286,nextCard
 FN:292,previousCard
 FN:301,toggleDetails
@@ -512,7 +512,7 @@ FNDA:0,checkAll
 FNDA:0,(anonymous_46)
 FNDA:0,getValueByPath
 FNDA:0,(anonymous_48)
-FNDA:0,checkColumn
+FNDA:0,toggleColumn
 FNDA:0,nextCard
 FNDA:0,previousCard
 FNDA:0,toggleDetails
