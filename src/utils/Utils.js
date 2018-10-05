@@ -28,7 +28,7 @@ export default {
       key = parseInt(key, 10); // eslint-disable-line
     }
 
-    if (object == null) {
+    if (object === null || object === undefined) {
       return [key, null];
     } else if (object instanceof Array) {
       if (object.length <= key) {
