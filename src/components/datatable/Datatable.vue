@@ -3,11 +3,11 @@
     <div class="data-input"><input type="search" name="search" placeholder="Search" v-model="state.search"
                                    v-if="displaySearchbar"/><i class="fa fa-search" aria-hidden="true"
                                                                @click=""></i></div>
-    <div class="checkbox-container" v-if="isColumnCheckable && !is_mobile">
+    <div class="checkbox-container" v-if="isColumnHidable && !isMobile">
       <div v-for="(column, index) in state.newColumns" :key="index">
         <label>{{column.label}}</label>
         <input type="checkbox" class="datatable-checkbox checkbox-all inline-block"
-               @change.sync="check_column(column)"
+               @change.sync="toggleColumn(column)"
                :value="column.field" checked>
       </div>
     </div>
@@ -16,16 +16,20 @@
       <tr class="headings" v-if="state.newColumns.length" @keydown.prevent.up="pressedArrow(-1)"
           @keydown.prevent.down="pressedArrow(1)">
         <div class="datatable-checkbox">
-          <input type="checkbox" class="datatable-checkbox checkbox-all inline-block" :value="is_all_checked"
-                 :disabled="is_all_uncheckable"
-                 @change="check_all"/>
+          <input type="checkbox" class="datatable-checkbox checkbox-all inline-block" :value="isAllChecked"
+                 :disabled="isAllUncheckable"
+                 @change="checkAll"/>
         </div>
-        <div v-for="column in state.newColumns" :key="index" @click.stop="sort(column)" :class="[
+        <div v-for="(column, index) in state.newColumns" :key="index" @click.stop="sort(column)" :class="[
                                 'row-container',
                                 state.currentSortColumn === column ? 'current-sort' : '',
                                 column.sortable && isSortable ? 'sortable' : ''
                             ]" v-if="column.visible">
           <div class="cell">
+            <input type="checkbox" class="datatable-checkbox inline-block column-checkbox"
+                   :value="isColumnChecked(column)"
+                   @change="checkColumn(column)" :checked="isAllChecked || isColumnChecked(column)" v-if="column.isColumnCheckable"/>
+
             <template>{{ column.label }}</template>
             <i aria-hidden="true"
                :class="[state.ascendant ? 'fa-chevron-down' : 'fa-chevron-up', 'fa data-icon']"
@@ -33,11 +37,11 @@
           </div>
         </div>
       </tr>
-      <div v-if="paginate_data.length">
+      <div v-if="paginateData.length">
         <div class="mobile-controls">
-          <div class="btn btn-primary" @click="previous_card"><i class="fa fa-chevron-left"
+          <div class="btn btn-primary" @click="previousCard"><i class="fa fa-chevron-left"
                                                                  aria-hidden="true"></i></div>
-          <div class="btn btn-primary" @click="next_card"><i class="fa fa-chevron-right"
+          <div class="btn btn-primary" @click="nextCard"><i class="fa fa-chevron-right"
                                                              aria-hidden="true"></i></div>
         </div>
         <div class="data-body" :class="{ 'loading': loading }">
@@ -47,15 +51,15 @@
             <div class="loading-item"></div>
             <div class="loading-item"></div>
           </div>
-          <template v-for="(row, index) in search_data">
-            <div :key="index" :class="[rowClass(row, index), {'selected': is_row_checked(row)}]"
+          <template v-for="(row, index) in searchData">
+            <div :key="index" :class="[rowClass(row, index), {'selected': isRowChecked(row)}]"
                  class=" border-table data-row"
-                 v-show="is_mobile? index === state.currentCard : true ">
+                 v-show="isMobile? index === state.currentCard : true ">
               <div class="datatable-checkbox">
                 <input type="checkbox" class="datatable-checkbox inline-block"
                        :disabled="!isRowCheckable(row)"
-                       :value="is_row_checked(row)"
-                       @change="check_row(row)" :checked="is_all_checked || is_row_checked(row)"/>
+                       :value="isRowChecked(row)"
+                       @change="checkRow(row)" :checked="isAllChecked || isRowChecked(row)"/>
               </div>
               <div class="mobile-label-container">
                 <div v-for="column in state.newColumns" :key="column.id" class="mobile-label">
@@ -65,26 +69,26 @@
                 </div>
               </div>
               <div class="row-container">
-                <a @click.stop="toggle_details(row)" class="details-button">
-                  <i v-show="!is_mobile && showDetails"
-                     :class="['fa fa-chevron-right', is_visible_detail_row(row) ? 'expanded' : '']"
+                <a @click.stop="toggleDetails(row)" class="details-button">
+                  <i v-show="!isMobile && showDetails"
+                     :class="['fa fa-chevron-right', isVisibleDetailRow(row) ? 'expanded' : '']"
                      aria-hidden="true"></i>
                 </a>
-                <div v-for="(column, index2) in state.newColumns" :key="index" class="cell"
+                <div v-for="(column, index2) in state.newColumns" :key="index2" class="cell"
                      v-if="state.visibilities[column.field]">
-                  <slot :name="column.field" :indexCol="index1" :indexRow="index" :data="_oa_find(row, column.field)"
+                  <slot :name="column.field" :indexCol="index2" :indexRow="index" :data="_oa_find(row, column.field)"
                         :label="column.label"
                         :visible="state.visibilities[column.field]">
-                    <data-column :visible="state.visibilities[column.field]" :label="column.label"
+                    <column :visible="state.visibilities[column.field]" :label="column.label"
                                  :field="column.field">
                       <span class="cell">{{_oa_find(row, column.field, '')}}</span>
-                    </data-column>
+                    </column>
                   </slot>
                 </div>
               </div>
             </div>
             <div class="row-container" v-if="showDetails">
-              <div class="details-container" v-if="is_visible_detail_row(row)">
+              <div class="details-container" v-if="isVisibleDetailRow(row)">
                 <slot :row="row" :index="index" name="details"></slot>
               </div>
             </div>
@@ -96,8 +100,8 @@
     <div class="row-container desktop-display">
       <div class="col col-md-12 text-center">
         <paginator :number-of-items="this.rows.length" :items-per-page="this.itemsPerPage" :skip="0"
-                   v-if="paginated" @page-change="change_page"
-                   :current_page="state.newCurrentPage"></paginator>
+                   v-if="paginated" @page-change="changePage"
+                   :currentPage="state.newCurrentPage"></paginator>
       </div>
     </div>
 

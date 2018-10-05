@@ -1,6 +1,6 @@
 {
   "name": "vuex-table",
-  "version": "1.6.11",
+  "version": "1.6.15",
   "description": "A vuex Datatable",
   "author": "Federica Alfano <federica.alfano@superpitch.fr>",
   "private": false,
@@ -15,15 +15,13 @@
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",
     "build": "node build/build.js",
-    "doc": "./node_modules/.bin/esdoc",
+    "doc": "./node_modules/.bin/documentation build src/**/*.js -f html -o docs",
     "deploy-doc": "npm run doc && ./node_modules/.bin/gh-pages -d doc"
   },
   "dependencies": {
+    "bootstrap": "^4.1.3",
     "bootstrap-vue": "^2.0.0-rc.11",
     "css-loader": "^0.28.11",
-    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
-    "esdoc-flow-type-plugin": "^1.1.0",
-    "esdoc-node": "^1.0.3",
     "font-awesome": "^4.7.0",
     "jest": "^22.4.4",
     "jest-serializer-vue": "^0.3.0",
@@ -58,6 +56,7 @@
     "chalk": "^2.0.1",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.11",
+    "documentation": "^8.1.2",
     "esdoc": "^1.1.0",
     "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^4.15.0",
