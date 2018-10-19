@@ -83,7 +83,7 @@ const Datatable = {
      *  @returns {array} Rows between start
      */
     paginateData() {
-      if (!this.paginated) {
+      if (!this.paginated || this.isMobile) {
         return this.state.newRows;
       }
       const currentPage = this.state.newCurrentPage;
