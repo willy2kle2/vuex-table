@@ -99,7 +99,7 @@
     </table>
     <div class="row-container desktop-display">
       <div class="col col-md-12 text-center">
-        <paginator :number-of-items="this.rows.length" :items-per-page="this.itemsPerPage" :skip="0"
+        <paginator :number-of-items="state.newRowsTotal" :items-per-page="this.itemsPerPage" :skip="0"
                    v-if="paginated" @page-change="changePage"
                    :currentPage="state.newCurrentPage"></paginator>
       </div>
