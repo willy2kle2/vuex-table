@@ -38,38 +38,199 @@ const Datatable = {
   /** @namespace */
   props: {
     /**
-     * Rows of the datatable
+     * Rows of datatable
      *
      * @memberof Datatable.props
      * @type {Array|Object}
      */
     rows: { type: [Array, Object], default: () => [] },
+    /**
+     * Columns of datatable
+     *
+     * @memberof Datatable.props
+     * @type {Array|Object}
+     */
     columns: { type: Array, default: () => [] },
+    /**
+     * It checks whether datatable is still paginated by third-party code or not
+     *
+     * @memberof Datatable.props
+     * @type {Boolean|Object}
+     */
     paginated: { type: Boolean, default: true },
+    /**
+     * It checks whether rows are checkable or not
+     *
+     * @memberof Datatable.props
+     * @type {Boolean|Object}
+     */
     checkable: Boolean,
+    /**
+     * Page displayed on datatable
+     *
+     * @memberof Datatable.props
+     * @type {Number | Object}
+     */
     currentPage: { type: Number, default: 1 },
+    /**
+     * Number of rows displayed per page
+     *
+     * @memberof Datatable.props
+     * @type {Number | Object}
+     */
     itemsPerPage: { type: Number, default: 5 },
+    /**
+     * Enable or disable sort functions on column
+     *
+     * @memberof Datatable.props
+     * @type {Boolean | Object}
+     */
     isSortable: { type: Boolean, default: true },
+    /**
+     * Show or hide searchbar
+     *
+     * @memberof Datatable.props
+     * @type {Boolean | Object}
+     */
     displaySearchbar: { type: Boolean, default: true },
+    /**
+     * Sort paramater by default
+     *
+     * @memberof Datatable.props
+     * @type {String | Object}
+     */
     defaultSort: [String, Array],
+    /**
+     * Sort direction by default. It can be 'asc' or 'desc'
+     *
+     * @memberof Datatable.props
+     * @type {String | Object}
+     */
     defaultSortDirection: { type: String, default: 'asc' },
+    /**
+     * Enable custom backend sorting functions and disable front sorting (built-in function)
+     *
+     * @memberof Datatable.props
+     * @type {Boolean | Object}
+     */
     backendSorting: { type: Boolean },
+    /**
+     * Enable custom backend pagination functions and disable front pagination (built-in function)
+     *
+     * @memberof Datatable.props
+     * @type {Boolean | Object}
+     */
     backendPagination: { type: Boolean },
+    /**
+     * Enable custom backend search functions and disable front search (built-in function)
+     *
+     * @memberof Datatable.props
+     * @type {Boolean | Object}
+     */
     backendSearch: { type: Boolean },
+    /**
+     * Total of pages. This prop is mandatory if backend pagination is implemented
+     *
+     * @memberof Datatable.props
+     * @type {Number | String | Object}
+     */
     total: { type: [Number, String], default: 0 },
+    /**
+     * It checks whether a row is selected or not
+     *
+     * @memberof Datatable.props
+     * @type {Boolean | Object}
+     */
     selected: { type: Boolean },
+    /**
+     * Custom function to attribute a CSS class on a row
+     *
+     * @memberof Datatable.props
+     * @type {Function | Object}
+     */
     rowClass: { type: Function, default: () => '' },
+    /**
+     * Object containing all selected rows. It's updated dynamically.
+     *
+     * @memberof Datatable.props
+     * @type {Object}
+     */
     selectedRows: { type: Object },
+    /**
+     * Function for checking rows
+     *
+     * @memberof Datatable.props
+     * @type {Function | Object}
+     */
     isRowCheckable: { type: Function, default: () => true },
+    /**
+     * Array containing all rows displayed on datatable.
+     *
+     * @memberof Datatable.props
+     * @type {Array | Object}
+     */
     checkedRows: { type: Array, default: () => [] },
+    /**
+     * Array containing all columns displayed on datatable. Column can be shown or hidden by checkboxes
+     * @memberof Datatable.props
+     * @type {Array | Object}
+     */
     checkedColumns: { type: Array, default: () => [] },
+    /**
+     * Function to check a row by default when component is mounted.
+     *
+     * @memberof Datatable.props
+     * @type {Function | Object}
+     */
     customIsChecked: Function,
+    /**
+     * Enable details template
+     *
+     * @memberof Datatable.props
+     * @type {Boolean | Object}
+     */
     showDetails: { type: Boolean, default: false },
+    /**
+     * Array containing all details displayed on datatable.
+     *
+     * @memberof Datatable.props
+     * @type {Array | Object}
+     */
     detailsOpened: { type: Array, default: () => [] },
+    /**
+     * Key binding details and rows
+     *
+     * @memberof Datatable.props
+     * @type {String | Object}
+     */
     detailKey: { type: String, default: '' },
+    /**
+     * Function to show details
+     *
+     * @memberof Datatable.props
+     * @type {Function | Object}
+     */
     detailsVisible: { type: Function, default: () => true },
+    /**
+     * When it is set as true, column can be hidden or shown by its own checkbox
+     *
+     * @memberof Datatable.props
+     * @type {Boolean | Object}
+     */
     isColumnHidable: { type: Boolean, default: true },
+    /**
+     * It checks whether content is loading or not (mainly for backend features)
+     *
+     * @memberof Datatable.props
+     * @type {Boolean | Object}
+     */
     loading: { type: Boolean },
+    /**
+     * When it is set as true, column values are checked by column checkbox
+     *
+     * @memberof Datatable.props
+     * @type {Boolean | Object}
+     */
     isColumnCheckable: { type: Boolean, default: false },
   },
   /** @namespace */
@@ -83,7 +244,7 @@ const Datatable = {
      *  @returns {array} Rows between start
      */
     paginateData() {
-      if (!this.paginated) {
+      if (!this.paginated || this.isMobile) {
         return this.state.newRows;
       }
       const currentPage = this.state.newCurrentPage;
@@ -136,6 +297,10 @@ const Datatable = {
 
       return this.paginateData;
     },
+    /**
+     * Function checking if new sortable columns have been added
+     * @returns {boolean}
+     */
     hasSortableNewColumns() {
       return this.newColumns.some(column => column.sortable);
     },
@@ -183,9 +348,19 @@ const Datatable = {
       if (!this.backendPagination) return;
       this.state.newRowsTotal = newTotal;
     },
+    /**
+     * Function for getting initial number of columns
+     * @memberof Datatable.watch
+     * @param value
+     */
     columns(value) {
       this.state.newColumns = [...value];
     },
+    /**
+     * Watcher on columns changes
+     * @memberof Datatable.watch
+     * @param newColumns
+     */
     newColumns(newColumns) {
       if (newColumns.length && this.state.firstTimeSort) {
         this.initializeSort();
@@ -206,18 +381,39 @@ const Datatable = {
     currentPage(value) {
       this.state.newCurrentPage = value;
     },
+    /**
+     * Getting current number of rows
+     * @memberof Datatable.watch
+     * @param newRows
+     */
     rows(newRows) {
       this.state.newRows = newRows || [];
     },
+    /**
+     * Watcher on details toggle function
+     * @memberof Datatable.watch
+     * @param expandedRows
+     * @see toggleDetails
+     */
 
     openedDetailed(expandedRows) {
       this.state.visibleDetailRows = expandedRows;
     },
 
+    /**
+     * Initial checkbox value
+     * @memberof Datatable.watch
+     * @param value
+     */
     value(value) {
       this.state.newValue = value;
     },
 
+    /**
+     * Watcher on checkbox value change
+     * @memberof Datatable.watch
+     * @param value
+     */
     newValue(value) {
       this.$emit('checkbox', value);
     },
@@ -234,7 +430,7 @@ const Datatable = {
      * @param func
      * @param ascendant
      * @memberof Datatable.methods
-     * @returns {Array}
+     * @returns {Array} Data sorted
      */
     // SORTING FUNCTIONS
     sortBy(data, key, func, ascendant) {
@@ -261,7 +457,7 @@ const Datatable = {
      * @memberof Datatable.methods
      * @param column
      * @param updatingData
-     * @returns {object}
+     * @returns {object} Column sorted
      * @see sortBy
      */
     sort(column, updatingData = false) {
@@ -337,6 +533,13 @@ const Datatable = {
       return this.state.newCheckedRows.indexOf(row, this.customIsChecked) >= 0;
     },
 
+    /**
+     * Function to uncheck a row
+     * @memberof Datatable.methods
+     * @param row
+     * @returns {object}
+     */
+
     removeCheckedRow(row) {
       const index = this.state.newCheckedRows.indexOf(row, this.customIsChecked);
       if (index >= 0) {
@@ -373,6 +576,12 @@ const Datatable = {
       return this.state.newCheckedColumns.indexOf(column, this.customIsChecked) >= 0;
     },
 
+    /**
+     * Function to uncheck a column
+     * @memberof Datatable.methods
+     * @param column
+     * @returns {object}
+     */
     removeCheckedColumn(column) {
       const index = this.state.newCheckedColumns.indexOf(column, this.customIsChecked);
       if (index >= 0) {
@@ -420,6 +629,14 @@ const Datatable = {
       this.$emit('check-all', this.state.newCheckedRows);
       this.$emit('update:checkedRows', this.state.newCheckedRows);
     },
+
+    /**
+     * Get value on an object according to a specific path
+     * @memberof Datatable.utils
+     * @param obj
+     * @param path
+     * @returns {*}
+     */
     getValueByPath(obj, path) {
       const value = path.split('.').reduce((o, i) => o[i], obj);
       return value;
@@ -463,7 +680,7 @@ const Datatable = {
     // SHOW DETAILS
 
     /**
-     * Function that show and hides details
+     * Function to show and hide details
      * @memberof Datatable.methods
      * @param obj
      * @function openDetailRow
@@ -487,7 +704,7 @@ const Datatable = {
     },
 
     /**
-     * Function to show details
+     * Function to show details according to row they belong to
      * @memberof Datatable.methods
      * @param obj
      */
@@ -496,7 +713,7 @@ const Datatable = {
       this.state.visibleDetailRows.push(index);
     },
     /**
-     * Function to hide details
+     * Function to hide details according to row they belong to
      * @memberof Datatable.methods
      * @param obj
      */
@@ -517,6 +734,12 @@ const Datatable = {
       return result;
     },
 
+    /**
+     * Function to handle key details according to row they belong to
+     * @memberof Datatable.methods
+     * @param idx
+     * @returns {*}
+     */
     handleDetailKey(idx) {
       const key = this.detailKey;
       return !key.length ? idx : idx[key];
