@@ -269,6 +269,12 @@
     width: 100%;
   }
 
+  .fit-column {
+    width: 1px;
+    white-space: nowrap;
+    margin: 0 2rem;
+  }
+
   .headings {
     font-weight: 800;
     font-size: 1.4rem;
@@ -299,7 +305,7 @@
 
   .cell {
     float: left;
-    padding: 1.5rem 0 0.5rem 0;
+    padding: 1.5rem 1rem 0.5rem 1rem;
     text-align: center;
     width: 100%;
     border: none;
@@ -307,6 +313,7 @@
 
   .data-row .cell {
     padding: 0 0.5rem 0.2rem 0;
+    display: table;
   }
 
   .cell:before {

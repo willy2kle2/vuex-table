@@ -21,7 +21,7 @@
                  @change="checkAll"/>
         </div>
         <div v-for="(column, index) in state.newColumns" :key="index" @click.stop="sort(column)" :class="[
-                                'row-container',
+                                column.fitColumn ? 'fit-column' : 'row-container',
                                 state.currentSortColumn === column ? 'current-sort' : '',
                                 column.sortable && isSortable ? 'sortable' : ''
                             ]" v-if="column.visible">
@@ -74,14 +74,14 @@
                      :class="['fa fa-chevron-right', isVisibleDetailRow(row) ? 'expanded' : '']"
                      aria-hidden="true"></i>
                 </a>
-                <div v-for="(column, index2) in state.newColumns" :key="index2" class="cell"
+                <div v-for="(column, index2) in state.newColumns" :key="index2" :class="column.fitColumn ? 'fit-column' : 'cell' "
                      v-if="state.visibilities[column.field]">
                   <slot :name="column.field" :indexCol="index2" :indexRow="index" :data="_oa_find(row, column.field)"
                         :label="column.label"
                         :visible="state.visibilities[column.field]">
                     <column :visible="state.visibilities[column.field]" :label="column.label"
-                                 :field="column.field">
-                      <span class="cell">{{_oa_find(row, column.field, '')}}</span>
+                                 :field="column.field" :fitColumn="column.fitColumn">
+                      <span>{{_oa_find(row, column.field, '')}}</span>
                     </column>
                   </slot>
                 </div>
