@@ -21,4 +21,4 @@ export default {
     columnFit: { type: Boolean, default: false },
     customSort: Function,
   },
-}
+};
