@@ -1,264 +1,264 @@
 
 
 // MOBILE-FIRST
-  * {
-    box-sizing: border-box;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  .data-container {
-    margin-bottom: 3rem;
-    width: 100%;
-    padding: 1rem;
+.data-container {
+  margin-bottom: 3rem;
+  width: 100%;
+  padding: 1rem;
 
-  }
+}
 
-  .data-row {
-    padding: 1rem;
-    width: 100%;
+.data-row {
+  padding: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.headings {
+  display: none;
+
+}
+
+.headings,
+.data-row {
+  border: 1px solid #ddd;
+}
+
+.cell {
+  text-align: right;
+  width: 100%;
+  border-bottom: 1px solid lightgrey;
+  padding: 1rem 1rem 1rem 0;
+
+}
+
+.mobile-label-container {
+  position: absolute;
+}
+
+.mobile-label {
+  display: block;
+  padding: 3.5rem 0 0.6rem 0;
+  font-weight: 800;
+
+}
+
+.cell:last-child {
+  border: none;
+}
+
+.datatable-button {
+  margin-left: 2rem;
+}
+
+.data-icon {
+  font-size: 1rem;
+  color: #777;
+  margin-left: 0.3rem;
+  line-height: 2rem;
+  cursor: pointer;
+}
+
+.data-input {
+  width: 350px;
+  position: relative;
+  margin-left: 1.5rem;
+  margin-bottom: 5rem;
+
+  input[type="search"] {
+    margin-left: -1.5rem;
+    background: #fdfdfd;
+    border-color: #e4e4e4;
+    padding: 0.5rem 1rem;
     margin-bottom: 2rem;
-    position: relative;
-  }
-
-  .headings {
-    display: none;
-
-  }
-
-  .headings,
-  .data-row {
-    border: 1px solid #ddd;
-  }
-
-  .cell {
-    text-align: right;
-    width: 100%;
-    border-bottom: 1px solid lightgrey;
-    padding: 1rem 1rem 1rem 0;
-
-  }
-
-  .mobile-label-container {
+    width: 5rem;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    border-radius: 3rem;
     position: absolute;
-  }
-
-  .mobile-label {
-    display: block;
-    padding: 3.5rem 0 0.6rem 0;
-    font-weight: 800;
+    left: 0;
 
   }
-
-  .cell:last-child {
-    border: none;
+  input[type="search"]::placeholder {
+    color: transparent;
   }
+  input[type="search"]:focus {
+    width: 95%;
+    background: #fff;
+    border-color: #e4e4e4;
+    box-shadow: none;
+    padding: 0.5rem 3rem;
+    border-radius: 3rem;
+    outline: none;
 
-  .datatable-button {
-    margin-left: 2rem;
   }
-
-  .data-icon {
-    font-size: 1rem;
-    color: #777;
-    margin-left: 0.3rem;
-    line-height: 2rem;
-    cursor: pointer;
+  input[type="search"]:focus::placeholder {
+    color: grey;
   }
-
-  .data-input {
-    width: 350px;
-    position: relative;
-    margin-left: 1.5rem;
-    margin-bottom: 5rem;
-
-    input[type="search"] {
-      margin-left: -1.5rem;
-      background: #fdfdfd;
-      border-color: #e4e4e4;
-      padding: 0.5rem 1rem;
-      margin-bottom: 2rem;
-      width: 5rem;
-      -webkit-transition: width 0.4s ease-in-out;
-      transition: width 0.4s ease-in-out;
-      border-radius: 3rem;
-      position: absolute;
-      left: 0;
-
-    }
-    input[type="search"]::placeholder {
-      color: transparent;
-    }
-    input[type="search"]:focus {
-      width: 95%;
-      background: #fff;
-      border-color: #e4e4e4;
-      box-shadow: none;
-      padding: 0.5rem 3rem;
-      border-radius: 3rem;
-      outline: none;
-
-    }
-    input[type="search"]:focus::placeholder {
-      color: grey;
-    }
-    i {
-      font-size: 2rem;
-      position: absolute;
-      left: -0.5rem;
-      top: 0.3rem;
-
-    }
+  i {
+    font-size: 2rem;
+    position: absolute;
+    left: -0.5rem;
+    top: 0.3rem;
 
   }
 
-  .mobile-controls {
-    display: flex;
-    margin-bottom: 1rem;
+}
 
-    div {
-      margin-right: 2rem;
-    }
+.mobile-controls {
+  display: flex;
+  margin-bottom: 1rem;
+
+  div {
+    margin-right: 2rem;
   }
+}
 
-  .data-body {
-    display: block;
-    width: 100%;
-    overflow: hidden;
-    height: auto;
+.data-body {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  height: auto;
 
-  }
-  .data-body .row-container {
-    width: 100%;
-  }
+}
+.data-body .row-container {
+  width: 100%;
+}
 
-  .datatable-checkbox {
-    margin-top: 1rem;
-  }
+.datatable-checkbox {
+  margin-top: 1rem;
+}
 
-  .datatable-checkbox :not(.checkbox-all) {
-    margin-left: 0.6rem;
-  }
+.datatable-checkbox :not(.checkbox-all) {
+  margin-left: 0.6rem;
+}
 
-  .checkbox-all {
-    padding-top: 2rem;
-  }
+.checkbox-all {
+  padding-top: 2rem;
+}
 
-  .selected {
-    background-color: #23b7e5;
+.selected {
+  background-color: #23b7e5;
+  color: white;
+  .details-button i {
     color: white;
-    .details-button i {
-      color: white;
-    }
   }
+}
 
-  .pointer {
-    cursor: pointer;
-  }
+.pointer {
+  cursor: pointer;
+}
 
-  .sortable {
-    cursor: pointer;
-  }
+.sortable {
+  cursor: pointer;
+}
 
-  .sortable:hover {
-    background-color: darken(#23b7e5, 5%);
+.sortable:hover {
+  background-color: darken(#23b7e5, 5%);
+  color: white;
+  i {
     color: white;
-    i {
-      color: white;
-    }
   }
+}
 
-  .current-sort {
+.current-sort {
+  color: #23b7e5;
+  i {
     color: #23b7e5;
-    i {
-      color: #23b7e5;
-    }
+  }
+}
+
+.desktop-display {
+  display: none;
+}
+
+.expanded {
+  transform: rotate(90deg);
+  color: white;
+}
+
+.details-container {
+  width: 100%;
+  min-height: 100px;
+  height: auto;
+  padding: 1rem;
+
+}
+
+.details-button {
+  margin: 0 1rem;
+  i {
+    color: #23b7e5;
+  }
+}
+
+.checkbox-container {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 1rem;
+  font-size: 1.2rem;
+
+  label {
+    margin-right: 0.8rem;
+  }
+}
+
+.loading {
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+}
+
+.loading-container {
+  width: 100%;
+  height: 100%;
+  margin-top: 2rem;
+}
+
+.loading-item {
+  width: 90%;
+  height: 1rem;
+  background-color: #23b7e5;
+  margin: 4rem 2rem;
+  animation-name: loading;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+
+  &:first-child {
+    width: 70%;
   }
 
-  .desktop-display {
-    display: none;
+  &:nth-child(2) {
+    width: 95%;
   }
 
-  .expanded {
-    transform: rotate(90deg);
-    color: white;
+  &:nth-child(3) {
+    width: 50%;
   }
-
-  .details-container {
-    width: 100%;
-    min-height: 100px;
-    height: auto;
-    padding: 1rem;
-
+  &:nth-child(4) {
+    width: 85%;
   }
+}
 
-  .details-button {
-    margin: 0 1rem;
-    i {
-      color: #23b7e5;
-    }
+@keyframes loading {
+  0% {
+    transition: none;
   }
-
-  .checkbox-container {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem 1rem;
-    font-size: 1.2rem;
-
-    label {
-      margin-right: 0.8rem;
-    }
+  50% {
+    background-color: lighten(#23b7e5, 50%);
+    transition: all 0.4s ease;
   }
-
-  .loading {
-    width: 100%;
-    height: 100vh;
-    background-color: white;
+  100% {
+    transition: all 0.4s ease;
   }
-
-  .loading-container {
-    width: 100%;
-    height: 100%;
-    margin-top: 2rem;
-  }
-
-  .loading-item {
-    width: 90%;
-    height: 1rem;
-    background-color: #23b7e5;
-    margin: 4rem 2rem;
-    animation-name: loading;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-
-    &:first-child {
-      width: 70%;
-    }
-
-    &:nth-child(2) {
-      width: 95%;
-    }
-
-    &:nth-child(3) {
-      width: 50%;
-    }
-    &:nth-child(4) {
-      width: 85%;
-    }
-  }
-
-  @keyframes loading {
-    0% {
-      transition: none;
-    }
-    50% {
-      background-color: lighten(#23b7e5, 50%);
-      transition: all 0.4s ease;
-    }
-    100% {
-      transition: all 0.4s ease;
-    }
-  }
+}
 
 
 // DESKTOP
@@ -267,6 +267,12 @@
     overflow-x: scroll;
     overflow-y: hidden;
     width: 100%;
+  }
+
+  .fit-column {
+    width: 1px;
+    white-space: nowrap;
+    margin-right: 2rem;
   }
 
   .headings {
@@ -297,9 +303,13 @@
     margin-left: 1rem;
   }
 
+  .column-cell {
+    margin-left: 2%;
+  }
+
   .cell {
     float: left;
-    padding: 1.5rem 0 0.5rem 0;
+    padding: 1.5rem 1rem 0.5rem 1rem;
     text-align: center;
     width: 100%;
     border: none;
@@ -307,6 +317,7 @@
 
   .data-row .cell {
     padding: 0 0.5rem 0.2rem 0;
+    display: table;
   }
 
   .cell:before {
@@ -327,7 +338,6 @@
 
   .data-row {
     display: flex;
-    justify-content: space-between;
     border-top: none;
     padding: 0.3rem 0.4rem;
     width: 100%;
