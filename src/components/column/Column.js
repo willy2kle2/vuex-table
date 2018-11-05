@@ -18,7 +18,6 @@ export default {
       type: Boolean,
       default: true,
     },
-    columnFit: { type: Boolean, default: false },
     customSort: Function,
   },
 };
