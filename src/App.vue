@@ -21,7 +21,7 @@
       return {
         state: {
           columns: [
-            { label: 'ID', field: 'id', visible: true },
+            { label: 'ID', field: 'id', visible: true, width: '20' },
             { label: 'First Name', field: 'first_name', visible: true },
             { label: 'Last Name', field: 'last_name', visible: true },
             { label: 'Date', field: 'date', visible: true },

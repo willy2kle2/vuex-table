@@ -21,10 +21,11 @@
                  @change="checkAll"/>
         </div>
         <div v-for="(column, index) in state.newColumns" :key="index" @click.stop="sort(column)" :class="[
-                                'row-container',
+                                'cell column-cell',
                                 state.currentSortColumn === column ? 'current-sort' : '',
                                 column.sortable && isSortable ? 'sortable' : ''
-                            ]" v-if="column.visible">
+                            ]"
+             v-if="column.visible" :style="{ width: column.width + '%' }">
           <div class="cell">
             <input type="checkbox" class="datatable-checkbox inline-block column-checkbox"
                    :value="isColumnChecked(column)"
@@ -40,9 +41,9 @@
       <div v-if="paginateData.length">
         <div class="mobile-controls">
           <div class="btn btn-primary" @click="previousCard"><i class="fa fa-chevron-left"
-                                                                 aria-hidden="true"></i></div>
+                                                                aria-hidden="true"></i></div>
           <div class="btn btn-primary" @click="nextCard"><i class="fa fa-chevron-right"
-                                                             aria-hidden="true"></i></div>
+                                                            aria-hidden="true"></i></div>
         </div>
         <div class="data-body" :class="{ 'loading': loading }">
           <div class="loading-container" v-if="loading">
@@ -74,14 +75,14 @@
                      :class="['fa fa-chevron-right', isVisibleDetailRow(row) ? 'expanded' : '']"
                      aria-hidden="true"></i>
                 </a>
-                <div v-for="(column, index2) in state.newColumns" :key="index2" class="cell"
+                <div v-for="(column, index2) in state.newColumns" :key="index2" class="cell" :style="{ width: column.width + '%' }"
                      v-if="state.visibilities[column.field]">
                   <slot :name="column.field" :indexCol="index2" :indexRow="index" :data="_oa_find(row, column.field)"
                         :label="column.label"
                         :visible="state.visibilities[column.field]">
                     <column :visible="state.visibilities[column.field]" :label="column.label"
-                                 :field="column.field">
-                      <span class="cell">{{_oa_find(row, column.field, '')}}</span>
+                            :field="column.field" >
+                      <span>{{_oa_find(row, column.field, '')}}</span>
                     </column>
                   </slot>
                 </div>
