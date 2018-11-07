@@ -269,11 +269,6 @@
     width: 100%;
   }
 
-  .fit-column {
-    width: 1px;
-    white-space: nowrap;
-    margin-right: 2rem;
-  }
 
   .headings {
     font-weight: 800;
@@ -305,6 +300,7 @@
 
   .column-cell {
     margin-left: 2%;
+    display: flex;
   }
 
   .cell {
@@ -338,6 +334,7 @@
 
   .data-row {
     display: flex;
+    justify-content: space-between;
     border-top: none;
     padding: 0.3rem 0.4rem;
     width: 100%;
@@ -423,3 +420,4 @@
   }
 
 }
+

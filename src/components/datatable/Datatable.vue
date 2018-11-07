@@ -25,7 +25,7 @@
                                 state.currentSortColumn === column ? 'current-sort' : '',
                                 column.sortable && isSortable ? 'sortable' : ''
                             ]"
-             v-if="column.visible" :style="{ width: column.width + 'px' }">
+             v-if="column.visible" :style="{ width: column.width + '%' }">
           <div class="cell">
             <input type="checkbox" class="datatable-checkbox inline-block column-checkbox"
                    :value="isColumnChecked(column)"
